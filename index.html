@@ -1449,7 +1449,7 @@ button{font:inherit;color:inherit}
 
   /* paste a Formspree (or similar) form URL here when the site is deployed. */
   /* Formspree form endpoint, e.g. 'https://formspree.io/f/abcdwxyz'. Empty = open the visitor's email app. */
-  var CF_ENDPOINT='';
+  var CF_ENDPOINT='https://formspree.io/f/xzeewynw';
   var cfForm=document.getElementById('cform'),cfName=document.getElementById('cf-name'),cfEmail=document.getElementById('cf-email'),cfMsg=document.getElementById('cf-msg'),cfStatus=document.getElementById('cf-status'),cfCard=document.getElementById('ra'),cfSubmit=cfForm.querySelector('[type="submit"]'),cfCopy=document.getElementById('copy'),cfCopyNote=cfCopy.querySelector('.copy-note');
   function cfSetStatus(cfText,cfState){cfStatus.textContent=cfText;cfStatus.classList.remove('ok','err');if(cfState)cfStatus.classList.add(cfState)}
   function cfLight(){cfCard.classList.remove('sent');cfCard.classList.add('lit');clearTimeout(cfCard._cfTimer);cfCard._cfTimer=setTimeout(function(){cfCard.classList.remove('lit')},5000)}
