@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap">
 <script>
   // restore the searchlight switch before first paint
-  (function(){try{var t=localStorage.getItem('gotham-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();
+  (function(){try{var t=localStorage.getItem('gotham-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}})();
 </script>
 <style>
 /* ── tokens: night and fog ─────────────────────────────────────────
@@ -878,7 +878,7 @@ button{font:inherit;color:inherit}
   var roN=document.getElementById('ro-n'),roC=document.getElementById('ro-c'),roT=0,skipB=document.getElementById('skip');
   var seen=false;try{seen=sessionStorage.getItem('title-seen')==='1'}catch(e){}
   var SEQ={emb:seen?2300:3200,name:seen?4300:5800};
-  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':!mqL.matches}
+  function isDark(){return root.getAttribute('data-theme')!=='light'}
   function readCols(){dark=isDark();var tl=document.getElementById('tog-l'),fm=document.getElementById('foot-mode');if(tl)tl.textContent=dark?'Night':'Day';if(fm)fm.textContent=dark?'After dark':'Morning fog'}
   function wing(c,w,h,f){
     var s=w/2,u=-h*.42*f;c.beginPath();
@@ -1448,7 +1448,8 @@ button{font:inherit;color:inherit}
     s.style.left=(b.offsetLeft+b.offsetWidth/2-9)+'px';s.style.top=(b.offsetTop-4)+'px';m.appendChild(s);setTimeout(function(){s.remove()},1300)}
 
   /* paste a Formspree (or similar) form URL here when the site is deployed. */
-  var CF_ENDPOINT='https://formsubmit.co/ajax/agojuru@sfsu.edu';
+  /* Formspree form endpoint, e.g. 'https://formspree.io/f/abcdwxyz'. Empty = open the visitor's email app. */
+  var CF_ENDPOINT='';
   var cfForm=document.getElementById('cform'),cfName=document.getElementById('cf-name'),cfEmail=document.getElementById('cf-email'),cfMsg=document.getElementById('cf-msg'),cfStatus=document.getElementById('cf-status'),cfCard=document.getElementById('ra'),cfSubmit=cfForm.querySelector('[type="submit"]'),cfCopy=document.getElementById('copy'),cfCopyNote=cfCopy.querySelector('.copy-note');
   function cfSetStatus(cfText,cfState){cfStatus.textContent=cfText;cfStatus.classList.remove('ok','err');if(cfState)cfStatus.classList.add(cfState)}
   function cfLight(){cfCard.classList.remove('sent');cfCard.classList.add('lit');clearTimeout(cfCard._cfTimer);cfCard._cfTimer=setTimeout(function(){cfCard.classList.remove('lit')},5000)}
@@ -1465,11 +1466,11 @@ button{font:inherit;color:inherit}
     if(cfInvalid){cfInvalid.classList.add('bad');cfSetStatus(cfError,'err');cfInvalid.focus();return}
     if(CF_ENDPOINT){
       cfSubmit.disabled=true;
-      fetch(CF_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:cfNameValue,email:cfEmailValue,message:cfMsgValue,_subject:'Portfolio message from '+cfNameValue,_template:'table',_captcha:'false'})}).then(function(cfResponse){
+      fetch(CF_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:cfNameValue,email:cfEmailValue,message:cfMsgValue,_subject:'Portfolio message from '+cfNameValue})}).then(function(cfResponse){
         if(!cfResponse.ok)throw new Error('send failed');return cfResponse.json().catch(function(){return {}})}).then(function(cfData){
         if(cfData&&String(cfData.success)==='false')throw new Error('send failed');
         cfSetStatus('Sent. I’ll reply to '+cfEmailValue+' soon.','ok');cfForm.reset();cfSent();cfSubmit.disabled=false;
-      }).catch(function(){cfSubmit.disabled=false;cfSetStatus('Couldn’t send from here. Opening your email app instead…','err');location.href='mailto:agojuru@sfsu.edu?subject='+encodeURIComponent('Portfolio message from '+cfNameValue)+'&body='+encodeURIComponent(cfMsgValue+'\n\n'+cfNameValue+'\n'+cfEmailValue)});
+      }).catch(function(){cfSubmit.disabled=false;cfSetStatus('The message service didn’t respond, so I’m opening your email app with your message.','err');location.href='mailto:agojuru@sfsu.edu?subject='+encodeURIComponent('Portfolio message from '+cfNameValue)+'&body='+encodeURIComponent(cfMsgValue+'\n\n'+cfNameValue+'\n'+cfEmailValue)});
     }else{
       var cfSubject='Portfolio message from '+cfNameValue,cfBody=cfMsgValue+'\n\n'+cfNameValue+'\n'+cfEmailValue;
       cfSetStatus('Opening your email app…','ok');cfSent();location.href='mailto:agojuru@sfsu.edu?subject='+encodeURIComponent(cfSubject)+'&body='+encodeURIComponent(cfBody);

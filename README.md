@@ -24,5 +24,5 @@ npx vercel --prod   # production
 
 ## Contact form
 
-The form posts to FormSubmit (`CF_ENDPOINT` in `index.html`). The first message sent triggers a
-one-time activation email to the inbox. If the post fails, the form opens the visitor's email app instead.
+Set `CF_ENDPOINT` in `index.html` to a Formspree form URL (`https://formspree.io/f/<id>`) and the form will post there.
+While it's empty, Send opens the visitor's email app with the message already filled in.
