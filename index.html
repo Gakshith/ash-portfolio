@@ -6,6 +6,10 @@
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <title>Akshith Gojuru · AI/ML Engineer</title>
 <meta name="description" content="Akshith Gojuru, AI/ML engineer and Computer Science student at San Francisco State. Computer vision, LLM agents and evaluation: AI that checks its own work.">
+<link rel="canonical" href="https://akshith-gojuru.vercel.app/">
+<meta property="og:url" content="https://akshith-gojuru.vercel.app/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <meta property="og:title" content="Akshith Gojuru · AI/ML Engineer">
 <meta property="og:description" content="Computer vision, LLM agents and evaluation: AI that checks its own work.">
 <meta name="theme-color" content="#08090C">
@@ -283,6 +287,21 @@ button{font:inherit;color:inherit}
 .gh{display:inline-flex;align-items:center;gap:6px;margin-top:10px;width:max-content;font-size:13.5px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px;transition:gap .3s var(--ease),border-color .3s}
 .gh:hover{gap:11px;border-color:var(--acc)}
 @media (max-width:900px){.projects{grid-template-columns:1fr;gap:56px}}
+.more{display:none;width:max-content;border:0;background:none;padding:2px 0;cursor:pointer;font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--acc-text)}
+@media (max-width:640px){
+  .projects{gap:44px}
+  .frame{padding:6px;border-radius:16px}
+  .shot{aspect-ratio:16/10}
+  .exh{left:16px}
+  .cap{padding-top:16px;gap:4px}
+  .cap h3{font-size:24px}
+  .cap .what{font-size:16px}
+  .cap .desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:14px}
+  .cap .desc.open{display:block;-webkit-line-clamp:unset}
+  .more{display:inline-block}
+  .cap .meta{font-size:11px;gap:4px 12px;margin-top:6px}
+  .gh{margin-top:8px;min-height:32px}
+}
 
 /* mini product UIs */
 .ui{position:absolute;inset:0;display:flex;flex-direction:column;font:400 11px/1.45 var(--f-body);background:var(--ui-bg);color:var(--ui-fg)}
@@ -366,8 +385,53 @@ button{font:inherit;color:inherit}
 .sg ul{display:flex;flex-wrap:wrap;gap:4px 0;font-size:16px}
 .sg li{display:inline-flex;align-items:center}
 .sg li + li::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--ink3);margin:0 10px;opacity:.7}
-@media (max-width:640px){.sg{grid-template-columns:1fr;gap:6px}}
-@media (max-width:560px){.belt{gap:4px}.pouch{padding-inline:3px}.pouch span{display:none}.buckle{width:42px;height:38px}}
+@media (max-width:640px),(pointer:coarse){.more{padding:10px 0}.skip,.scroll{padding:12px 0}.brand{padding-block:8px}}
+/* skills v2: six groups in a hairline grid, each skill a quiet chip */
+.skills{grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line2)}
+.skills .sg{display:grid;grid-template-columns:1fr;align-content:start;gap:12px;padding:18px 18px 20px;border-top:0;background:var(--bg);transition:background .3s}
+.skills .sg:first-child{padding-top:18px}
+.skills .sg.on{background:color-mix(in srgb,var(--acc) 5%,var(--bg))}
+.skills .sg ul{gap:6px;font-size:13.5px}
+.skills .sg li{padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px var(--line);line-height:1.3;color:var(--ink);transition:box-shadow .3s}
+.skills .sg li + li::before{content:none}
+.skills .sg.on li{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 45%,transparent)}
+@media (max-width:760px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.skills{grid-template-columns:1fr}.skills .sg{padding:16px}}
+@media (max-width:560px){.belt{display:none}.belt{gap:4px}.pouch{padding-inline:3px}.pouch span{display:none}.buckle{width:42px;height:38px}}
+
+/* contact: the rooftop signal. Your message powers the lamp; sending puts the emblem on the clouds. */
+.ra{position:relative;display:grid;grid-template-columns:minmax(0,370px) 1fr;min-height:580px;border-radius:14px;overflow:hidden;background:var(--sky1);box-shadow:0 0 0 1px var(--line2)}
+.ra > canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.ra-copy{position:relative;z-index:2;display:grid;gap:22px;align-content:start;padding:clamp(28px,4vw,40px) 0 clamp(28px,4vw,40px) clamp(20px,4vw,40px)}
+.ra-h{font:400 clamp(36px,4.4vw,50px)/1 var(--f-display);letter-spacing:-.03em;color:var(--ink)}
+.ra-h em{font-style:italic;color:var(--acc-text)}
+.ra .cform{display:grid;gap:14px;padding:20px 22px;border-radius:12px;background:color-mix(in srgb,var(--bg) 80%,transparent);box-shadow:0 0 0 1px var(--line2);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.ra .fld{display:grid;gap:4px;min-width:0}
+.ra-two{display:grid;gap:14px}
+.ra .fld label{font:500 10px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.ra .fld input,.ra .fld textarea{width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:6px 0 7px;font:400 16px/1.5 var(--f-body);color:var(--ink);resize:none}
+.ra .fld textarea{min-height:66px}
+.ra .fld input::placeholder,.ra .fld textarea::placeholder{color:var(--ink3);opacity:.8}
+.ra .fld input:focus,.ra .fld textarea:focus{outline:0;border-bottom-color:var(--acc)}
+.ra .fld .bad{border-bottom-color:var(--err)}
+#ra #cf-name,#ra #cf-email{width:100%;font:400 16px/1.5 var(--f-body);color:var(--ink)}
+#ra #cf-msg{min-height:72px;max-height:180px;resize:vertical;margin:0;padding:6px 0 7px;background:none;font:400 16px/1.5 var(--f-body);border-bottom:1px solid var(--line)}
+#ra #cf-msg:focus{background:none;border-bottom-color:var(--acc)}
+#ra #cf-msg.bad,#ra #cf-name.bad,#ra #cf-email.bad{border-bottom-color:var(--err)}
+.ra .c-send{background:var(--acc);color:#1A1405;box-shadow:none;padding:12px 18px 12px 14px}
+.ra .c-send svg{fill:currentColor}
+.ra .c-send:hover,.ra .c-send:focus-visible{background:var(--acc);box-shadow:0 10px 30px -12px var(--acc);transform:translateY(-1px)}
+.ra .c-foot{margin-top:0;padding-top:0;border-top:0}
+.ra-read{position:absolute;z-index:3;left:clamp(20px,4vw,44px);bottom:20px;display:flex;align-items:center;gap:10px;margin:0;font:400 11px/1.4 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink3);font-variant-numeric:tabular-nums}
+.ra-read b{font-weight:500;color:var(--ink2)}
+.ra-read .meter{width:64px;height:3px;border-radius:2px;background:var(--line);overflow:hidden}
+.ra-read .meter i{display:block;height:100%;width:calc(var(--p,.25)*100%);background:var(--acc);transition:width .4s var(--ease)}
+@media (max-width:720px){
+  .ra{grid-template-columns:1fr;min-height:0}
+  .ra-copy{padding:250px 18px 28px}
+  .ra-two{grid-template-columns:1fr}
+  .ra .cform{padding:18px}
+}
 
 /* education */
 .edu{display:grid;grid-template-columns:240px 1fr;gap:clamp(28px,5vw,56px);align-items:center}
@@ -720,18 +784,18 @@ button{font:inherit;color:inherit}
   <section class="sec page" id="contact">
     <div class="orn" aria-hidden="true"><span class="ob"><svg class="wake" viewBox="0 0 100 44"><path d="M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z"/></svg></span></div>
     <div class="sh"><span class="sn">FILE 06</span><h2>Contact</h2><span class="sk">Light the signal.</span></div>
-    <div class="card">
-      <div class="card-l">
-        <p class="c-lede">Interested in working together? <em>Let’s talk.</em></p>
+    <div class="ra" id="ra">
+      <canvas aria-hidden="true"></canvas>
+      <div class="ra-copy">
+        <h3 class="ra-h">Let’s <em>connect.</em></h3>
         <form class="cform" id="cform" novalidate>
-          <p class="c-letter">Hi Akshith, I’m <label class="sr" for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" placeholder="your name" required> and you can reach me at <label class="sr" for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>.</p>
-          <label class="sr" for="cf-msg">Message</label>
-          <textarea id="cf-msg" name="message" rows="4" placeholder="Tell me about the role, the project, or the problem you’re working on…" required></textarea>
-          <div class="c-send-row"><button class="c-send" type="submit"><svg viewBox="0 0 100 44" aria-hidden="true"><path d="M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z"/></svg>Light the signal</button><p id="cf-status" aria-live="polite"></p></div>
+          <div class="ra-two"><div class="fld"><label for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" placeholder="Jordan Lee" required></div>
+          <div class="fld"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div></div>
+          <div class="fld"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="3" placeholder="The role, the project, or the problem…" required></textarea></div>
+          <div class="c-send-row"><button class="c-send" type="submit"><svg viewBox="0 0 100 44" aria-hidden="true"><path d="M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z"/></svg>Send</button><p id="cf-status" aria-live="polite"></p></div>
         </form>
         <div class="c-foot"><span class="c-else">Elsewhere</span><div class="c-icons"><a class="c-icon" href="https://github.com/Gakshith" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.2c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.28-1.29-5.28-5.68 0-1.25.45-2.28 1.2-3.08-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.75.11 3.05.74.8 1.2 1.83 1.2 3.08 0 4.4-2.72 5.38-5.3 5.67.42.36.79 1.06.79 2.14v3.18c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg></a><a class="c-icon" href="https://www.linkedin.com/in/akshithgojuru/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.3 7.9H1.6V22h3.7V7.9ZM3.45 2A2.17 2.17 0 1 0 3.4 6.34 2.17 2.17 0 0 0 3.45 2ZM22 13.9c0-4.25-2.27-6.23-5.3-6.23a4.58 4.58 0 0 0-4.14 2.28h-.05V7.9H8.94V22h3.72v-6.98c0-1.84.35-3.63 2.64-3.63 2.25 0 2.28 2.1 2.28 3.75V22H22v-8.1Z"/></svg></a><button class="c-icon" type="button" id="copy" aria-label="Copy email address" title="Copy email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 5.5A2.5 2.5 0 0 1 5 3h14a2.5 2.5 0 0 1 2.5 2.5v13A2.5 2.5 0 0 1 19 21H5a2.5 2.5 0 0 1-2.5-2.5v-13Zm2.7-.75L12 10.37l6.8-5.62H5.2Zm14.55 1.58-7.2 5.95a.85.85 0 0 1-1.1 0l-7.2-5.95V18.5c0 .41.34.75.75.75h14a.75.75 0 0 0 .75-.75V6.33Z"/></svg><span class="copy-note" aria-hidden="true">Copied</span></button></div></div>
       </div>
-      <div class="card-r sig" aria-hidden="true"><svg viewBox="0 0 300 260" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="g-sbeam" gradientUnits="userSpaceOnUse" x1="205" y1="206" x2="140" y2="72"><stop offset="0" stop-color="#FFE7A8" stop-opacity=".42"/><stop offset="1" stop-color="#FFE7A8" stop-opacity=".1"/></linearGradient><radialGradient id="g-spool"><stop offset="0" stop-color="#FFE9B0" stop-opacity=".55"/><stop offset=".62" stop-color="#F2C14E" stop-opacity=".3"/><stop offset="1" stop-color="#F2C14E" stop-opacity="0"/></radialGradient></defs><ellipse class="cl" cx="70" cy="60" rx="90" ry="16"/><ellipse class="cl" cx="220" cy="96" rx="110" ry="14"/><ellipse class="cl" cx="150" cy="140" rx="80" ry="10"/><path class="sig-beam" d="M201 206L80 88L200 52L209 206Z" fill="url(#g-sbeam)"/><g class="sig-pool"><ellipse cx="140" cy="70" rx="72" ry="42" fill="url(#g-spool)"/><path d="M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z" transform="translate(95 51) scale(.9)" fill="#0A0C10" fill-opacity=".9"/></g><path class="mini" d="M0 260V222H41V260ZM37 260V239H70V260ZM66 260V240H110V260ZM106 260V230H148V260ZM144 260V240H166V260ZM162 260V238H198V260ZM194 260V234H223V260ZM219 260V219H242V260ZM238 260V225H263V260ZM259 260V221H296V260ZM292 260V231H300V260ZM188 260V216H226V260ZM200 216L205 206L210 216Z"/><rect class="lens" x="200" y="200" width="10" height="7" rx="2" transform="rotate(-24 205 203)"/></svg><p class="sig-cap"><b>SIGNAL</b> · <span class="off">STANDBY</span><span class="on">LIT</span><span class="sent">SENT</span><span class="co"> · 37.72°N 122.48°W</span></p></div>
     </div>
   </section>
 
@@ -942,9 +1006,13 @@ button{font:inherit;color:inherit}
     SEQ.emb=-1;SEQ.name=Math.min(SEQ.name,age);
     B.forEach(function(b){if(b.m===0){var a=Math.random()*6.2832,r=Math.max(W,H)*.7;b.x=V.x+Math.cos(a)*r;b.y=V.y+Math.sin(a)*r*.7;b.vx=-Math.cos(a)*8;b.vy=-Math.sin(a)*6;b.m=2;b.t0=age}});
   }
+  var sDir=1,lastSY=0,wasOut=false;
+  function cub(t,ax,ay,bx,by,cx,cy,dx,dy){var m=1-t,a=m*m*m,b2=3*m*m*t,c=3*m*t*t,d=t*t*t;return [a*ax+b2*bx+c*cx+d*dx,a*ay+b2*by+c*cy+d*dy]}
   function draw(now,still){
     var t=now/1000,dt=now-last;dt=dt>0?Math.min(50,dt):0;var k6=dt/16.67;last=now;
     var age=now-born,sY=window.scrollY||0,sp=Math.min(1,Math.max(0,sY/(H*.9))),oY=Math.min(sY,H)*.7;
+    if(sY>lastSY+.5)sDir=1;else if(sY<lastSY-.5)sDir=-1;lastSY=sY;
+    if(sp>.35)wasOut=true;if(wasOut&&sp<.02){wasOut=false;SIG.flare=now}
     if(!still&&!went&&age>SEQ.name+1100)reveal();
     var rxS=Math.min(210,Math.max(108,fs*.95)),ryS=rxS*.56,skyT=Math.max(ryS*.75+58,box.y-ryS*.42);
     if(!still&&(!A.active||now-A.last>2600)){var kk=t*.14;A.tx=box.x+box.w*(.5+.4*Math.sin(kk*2.1));A.ty=skyT-ryS*.25+Math.sin(kk*3.4+1)*ryS*.25}
@@ -1028,19 +1096,38 @@ button{font:inherit;color:inherit}
       if(sp>0&&!still){
         y+=oY;
         if(b.m>=2){
-          var lq=(b.tx-box.x)/Math.max(1,box.w),q=Math.max(0,Math.min(1,(sp-lq*.3-b.hr*.06)/.62));
+          if(b.r1===undefined){b.r1=Math.random();b.r2=Math.random();b.sd=b.r2<.5?-1:1}
+          var lq=Math.max(0,Math.min(1,(b.tx-box.x)/Math.max(1,box.w))),goUp=sDir<0;
+          // down: letters peel left to right; up: they land right to left
+          var dn=Math.min(1,Math.hypot((b.tx-V.x)/Math.max(1,box.w*.5),(b.ty-V.y)/Math.max(1,box.h*.9)));
+          var q=goUp?Math.max(0,Math.min(1,(sp-(1-lq)*.32-b.r1*.08)/.55)):Math.max(0,Math.min(1,(sp-dn*.22-b.r1*.06)/.5));
           if(q>0){
-            var mk=Math.min(1,q*2.6);mk=mk*mk*(3-2*mk);
-            var th=b.hA+q*9+t*1.6*mk,rr=HR*(.3+.7*b.hr)*(1+.9*q*q),cyh=V.y+oY-Math.pow(q,1.7)*H*.62-Math.sin(Math.min(1,q*7)*Math.PI)*16;
-            var hx=V.x+Math.sin(q*3.2+b.hA*.15)*HR*.18+Math.cos(th)*rr,hy=cyh+Math.sin(th)*rr*.24,near=(Math.sin(th)+1)/2;
-            x+=(hx-x)*mk;y+=(hy-y)*mk;
-            sz*=1+mk*(near*1.5-.25)+Math.max(0,q-.68)*near*10;
-            al*=(1-mk*(1-near)*.55)*(1-Math.max(0,(q-.76)/.24));
-            bkD=Math.cos(th)*.85*mk+bkD*(1-mk);vxD=-Math.sin(th)*4*mk;far=far&&mk<.5;front=near>.5&&mk>.3;
-            if(q<1){b.ph+=NF*b.fq/1000*dt*mk;flyN++}
+            var x0=x,y0=y,ex=x0+W*(.12+.35*(b.r2-.35)),ey=-H*(.25+.35*b.r1),P,P2,lift,u;
+            if(!goUp){
+              // fly-through: the camera passes through the name; it opens from its centre and every bat streams outward past you
+              var mob=W<720,zq=q*q*(3-2*q),z=zq*.86,f=1/(1-z),cx=V.x,cy=V.y+oY,ang=b.r2*6.2832;
+              P=[cx+(x0-cx)*f+Math.cos(ang)*zq*W*.12,cy+(y0-cy)*f*1.15+Math.sin(ang)*zq*H*.1-zq*24];
+              P2=[P[0]+(x0-cx+Math.cos(ang)*40)*.05,P[1]];
+              lift=0;sz*=Math.min(mob?3.2:4.6,f);
+              al*=1-Math.max(0,Math.min(1,(q-.5)/.45));
+            }else{
+              // homecoming: a dive from above that swings under the perch and settles
+              u=1-q;var e2=u*u*(3-2*u),sx=x0-b.sd*W*(.18+.2*b.r2),sy=-H*(.2+.3*b.r1);
+              P=cub(e2,sx,sy,x0+b.sd*W*.08,y0-H*.35,x0-b.sd*22,y0+38,x0,y0);
+              P2=cub(Math.min(1,e2+.02),sx,sy,x0+b.sd*W*.08,y0-H*.35,x0-b.sd*22,y0+38,x0,y0);
+              lift=1-u;al*=Math.min(1,u*3+.15);
+            }
+            x=P[0];y=P[1];
+            var hdx=P2[0]-P[0];
+            sz*=1+.7*lift*(.6+.8*b.r2);
+            bkD=Math.max(-1,Math.min(1,hdx*.06))*.85;vxD=Math.max(-8,Math.min(8,hdx*.6));far=false;
+            if(!(goUp&&u>.94)){b.ph+=NF*b.fq/1000*dt*1.25;flyN++}
           }
         }
       }
+      // ease the drawn position, so a change of scroll direction mid-flight turns instead of jumping
+      if(!still){var lf=(sp>0||b.lg>0)?Math.min(1,.22*k6):1;b.lg=sp>0?45:Math.max(0,(b.lg||0)-1);
+        if(b.dX===undefined||lf===1){b.dX=x;b.dY=y}else{b.dX+=(x-b.dX)*lf;b.dY+=(y-b.dY)*lf}x=b.dX;y=b.dY}
       if(b.m===1)al*=.55+.45*b.z;
       if(front)FR.push([SPR[pre+'N'][fr],x,y,sz,bkD,vxD,al]);else if(al>.01)sprite(SPR[pre+(far?'F':'N')][fr],x,y,sz,bkD,vxD,al);
     }
@@ -1136,6 +1223,10 @@ button{font:inherit;color:inherit}
 
   /* a flashlight on the evidence */
   document.querySelectorAll('.frame').forEach(function(f){f.addEventListener('pointermove',function(e){var r=f.getBoundingClientRect();f.style.setProperty('--mx',(e.clientX-r.left)+'px');f.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+
+  /* project descriptions fold to two lines on phones */
+  document.querySelectorAll('.cap .desc').forEach(function(d){var b=document.createElement('button');b.type='button';b.className='more';b.textContent='More';b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){var o=d.classList.toggle('open');b.textContent=o?'Less':'More';b.setAttribute('aria-expanded',o)});d.after(b)});
 
   /* the belt answers the ledger */
   var pouches=[].slice.call(document.querySelectorAll('#belt .pouch')),rows=[].slice.call(document.querySelectorAll('.sg'));
@@ -1357,8 +1448,8 @@ button{font:inherit;color:inherit}
     s.style.left=(b.offsetLeft+b.offsetWidth/2-9)+'px';s.style.top=(b.offsetTop-4)+'px';m.appendChild(s);setTimeout(function(){s.remove()},1300)}
 
   /* paste a Formspree (or similar) form URL here when the site is deployed. */
-  var CF_ENDPOINT='';
-  var cfForm=document.getElementById('cform'),cfName=document.getElementById('cf-name'),cfEmail=document.getElementById('cf-email'),cfMsg=document.getElementById('cf-msg'),cfStatus=document.getElementById('cf-status'),cfCard=document.querySelector('.card'),cfSubmit=cfForm.querySelector('[type="submit"]'),cfCopy=document.getElementById('copy'),cfCopyNote=cfCopy.querySelector('.copy-note');
+  var CF_ENDPOINT='https://formsubmit.co/ajax/agojuru@sfsu.edu';
+  var cfForm=document.getElementById('cform'),cfName=document.getElementById('cf-name'),cfEmail=document.getElementById('cf-email'),cfMsg=document.getElementById('cf-msg'),cfStatus=document.getElementById('cf-status'),cfCard=document.getElementById('ra'),cfSubmit=cfForm.querySelector('[type="submit"]'),cfCopy=document.getElementById('copy'),cfCopyNote=cfCopy.querySelector('.copy-note');
   function cfSetStatus(cfText,cfState){cfStatus.textContent=cfText;cfStatus.classList.remove('ok','err');if(cfState)cfStatus.classList.add(cfState)}
   function cfLight(){cfCard.classList.remove('sent');cfCard.classList.add('lit');clearTimeout(cfCard._cfTimer);cfCard._cfTimer=setTimeout(function(){cfCard.classList.remove('lit')},5000)}
   function cfSent(){cfCard.classList.remove('lit');cfCard.classList.add('sent');clearTimeout(cfCard._cfTimer);cfCard._cfTimer=setTimeout(function(){cfCard.classList.remove('sent')},6000)}
@@ -1374,10 +1465,11 @@ button{font:inherit;color:inherit}
     if(cfInvalid){cfInvalid.classList.add('bad');cfSetStatus(cfError,'err');cfInvalid.focus();return}
     if(CF_ENDPOINT){
       cfSubmit.disabled=true;
-      fetch(CF_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:cfNameValue,email:cfEmailValue,message:cfMsgValue})}).then(function(cfResponse){
-        if(!cfResponse.ok)throw new Error('send failed');
+      fetch(CF_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:cfNameValue,email:cfEmailValue,message:cfMsgValue,_subject:'Portfolio message from '+cfNameValue,_template:'table',_captcha:'false'})}).then(function(cfResponse){
+        if(!cfResponse.ok)throw new Error('send failed');return cfResponse.json().catch(function(){return {}})}).then(function(cfData){
+        if(cfData&&String(cfData.success)==='false')throw new Error('send failed');
         cfSetStatus('Sent. I’ll reply to '+cfEmailValue+' soon.','ok');cfForm.reset();cfSent();cfSubmit.disabled=false;
-      }).catch(function(){cfSetStatus('Message failed to send. Please try again.','err');cfSubmit.disabled=false});
+      }).catch(function(){cfSubmit.disabled=false;cfSetStatus('Couldn’t send from here. Opening your email app instead…','err');location.href='mailto:agojuru@sfsu.edu?subject='+encodeURIComponent('Portfolio message from '+cfNameValue)+'&body='+encodeURIComponent(cfMsgValue+'\n\n'+cfNameValue+'\n'+cfEmailValue)});
     }else{
       var cfSubject='Portfolio message from '+cfNameValue,cfBody=cfMsgValue+'\n\n'+cfNameValue+'\n'+cfEmailValue;
       cfSetStatus('Opening your email app…','ok');cfSent();location.href='mailto:agojuru@sfsu.edu?subject='+encodeURIComponent(cfSubject)+'&body='+encodeURIComponent(cfBody);
@@ -1389,6 +1481,72 @@ button{font:inherit;color:inherit}
     cfCard.classList.add('lit');clearTimeout(cfCard._cfTimer);cfCard._cfTimer=setTimeout(function(){cfCard.classList.remove('lit')},5000);
     try{navigator.clipboard.writeText('agojuru@sfsu.edu').then(cfCopied,cfCopyFailed)}catch(cfCopyError){cfCopyFailed()}
   });
+
+
+  /* the rooftop signal: filling the form powers the lamp; a sent message puts the emblem on the clouds */
+  (function(){
+    var root=document.getElementById('ra');if(!root)return;
+    var cv=root.querySelector('canvas'),ctx=cv.getContext('2d'),BATP=new Path2D('M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z'),RM=matchMedia('(prefers-reduced-motion: reduce)');
+    
+    var W,H,dpr,base,mobile,city,clouds=[],lamp={x:0,y:0},aim={x:0,y:0},ptr=null,pw=.25,power=.25,sent=0,sentAt=0,C={},on=false,raf=0;
+    function rnd(s){return function(){s=(s*16807)%2147483647;return (s-1)/2147483646}}
+    function cl(v,a,b){return Math.max(a,Math.min(b,v))}
+    function theme(){var cs=getComputedStyle(document.documentElement),g=function(n){return cs.getPropertyValue(n).trim()};
+      C={sky1:g('--sky1'),sky2:g('--sky2'),city:g('--city'),night:g('--night')!=='0'}}
+    function build(){
+      theme();dpr=Math.min(2,devicePixelRatio||1);W=root.clientWidth;H=root.clientHeight;mobile=matchMedia('(max-width:720px)').matches;
+      cv.width=W*dpr;cv.height=H*dpr;base=mobile?230:H;
+      var r=rnd(11);clouds=[];for(var i=0;i<(mobile?22:38);i++)clouds.push({x:r()*W*1.4,y:base*(.06+r()*.5),rx:60+r()*170,ry:22+r()*44,a:.05+r()*.08,s:.04+r()*.08});
+      city=document.createElement('canvas');city.width=W*dpr;city.height=H*dpr;var g=city.getContext('2d');g.scale(dpr,dpr);
+      var x=0,r2=rnd(5),maxH=Math.min(170,base*.3),lx=W*(mobile?.8:.82);
+      g.fillStyle=C.city;
+      while(x<W){var bw=24+r2()*60,bh=maxH*(.25+r2()*.6);
+        if(lx>=x&&lx<x+bw){bh=maxH*.95;lamp.x=x+bw/2;lamp.y=base-bh-10}
+        g.fillRect(x,base-bh,bw+1,bh);
+        if(C.night)for(var wy=base-bh+8;wy<base-6;wy+=11)for(var wx=x+5;wx<x+bw-5;wx+=9){var q=r2();if(q<.16){g.fillStyle=q<.05?'rgba(207,214,228,.22)':'rgba(242,193,78,'+(.18+r2()*.35)+')';g.fillRect(wx,wy,3,4);g.fillStyle=C.city}}
+        x+=bw}
+      g.fillRect(lamp.x-6,lamp.y+4,12,10);
+      if(!aim.x){aim.x=W*.6;aim.y=base*.25}
+    }
+    root.addEventListener('pointermove',function(e){var b=root.getBoundingClientRect();ptr={x:e.clientX-b.left,y:e.clientY-b.top,touch:e.pointerType!=='mouse'}});
+    root.addEventListener('pointerleave',function(){ptr=null});
+    function flick(t){var k=cl(t/1000,0,1),K=[[0,0],[.08,.85],[.14,.1],[.24,.9],[.3,.35],[.42,1],[1,1]];for(var i=1;i<K.length;i++)if(k<=K[i][0]){var a=K[i-1],b=K[i];return a[1]+(b[1]-a[1])*(k-a[0])/(b[0]-a[0])}return 1}
+    function frame(t){
+      var tx,ty,still=RM.matches;
+      if(ptr&&!still){tx=cl(ptr.x,W*.06,W*.94);ty=cl(ptr.y,base*.12,base*(mobile?.62:.58))}
+      else if(mobile&&!still){var b=root.getBoundingClientRect(),p=cl((innerHeight-b.top)/(innerHeight+b.height),0,1);tx=W*(.9-.7*p);ty=base*(.28+.06*Math.sin(p*6))}
+      else{tx=W*.68+(still?0:W*.03*Math.sin(t/2600));ty=base*.3+(still?0:base*.02*Math.sin(t/3300))}
+      if(still||!aim.set){aim.x=tx;aim.y=ty;aim.set=1}else{aim.x+=(tx-aim.x)*.07;aim.y+=(ty-aim.y)*.07}pw=1;
+      var fl=sent&&!still?flick(t-sentAt):1,P=pw*fl*(C.night?1:.6);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      var sk=ctx.createLinearGradient(0,0,0,base);sk.addColorStop(0,C.sky1);sk.addColorStop(1,C.sky2);ctx.fillStyle=sk;ctx.fillRect(0,0,W,H);
+      if(mobile){ctx.fillStyle=getComputedStyle(document.body).backgroundColor;ctx.fillRect(0,base,W,H-base)}
+      var cc=C.night?'150,160,185':'255,255,255';
+      clouds.forEach(function(c){var x=((c.x+t*c.s*.01)%(W*1.4))-W*.2;c._x=x;
+        ctx.save();ctx.translate(x,c.y);ctx.scale(1,c.ry/c.rx);var g=ctx.createRadialGradient(0,0,0,0,0,c.rx);g.addColorStop(0,'rgba('+cc+','+(C.night?c.a:c.a*2.5)+')');g.addColorStop(1,'rgba('+cc+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,c.rx,0,7);ctx.fill();ctx.restore()});
+      var dx=aim.x-lamp.x,dy=aim.y-lamp.y,d=Math.hypot(dx,dy)||1,nx=-dy/d,ny=dx/d,hw=d*(mobile?.2:.24),R=hw*1.3;
+      ctx.globalCompositeOperation=C.night?'lighter':'source-over';
+      var bg=ctx.createLinearGradient(lamp.x,lamp.y,aim.x,aim.y);bg.addColorStop(0,'rgba(255,231,168,'+(.42*P)+')');bg.addColorStop(1,'rgba(255,231,168,'+(.07*P)+')');
+      ctx.fillStyle=bg;ctx.beginPath();ctx.moveTo(lamp.x+nx*3,lamp.y+ny*3);ctx.lineTo(aim.x+nx*hw,aim.y+ny*hw);ctx.lineTo(aim.x-nx*hw,aim.y-ny*hw);ctx.lineTo(lamp.x-nx*3,lamp.y-ny*3);ctx.closePath();ctx.fill();
+      ctx.save();ctx.translate(aim.x,aim.y);ctx.scale(1,.62);
+      var pg=ctx.createRadialGradient(0,0,0,0,0,R);pg.addColorStop(0,'rgba(255,233,176,'+(.62*P)+')');pg.addColorStop(.6,'rgba(242,193,78,'+(.26*P)+')');pg.addColorStop(1,'rgba(242,193,78,0)');ctx.fillStyle=pg;ctx.beginPath();ctx.arc(0,0,R,0,7);ctx.fill();ctx.restore();
+      clouds.forEach(function(c){var k=Math.exp(-Math.pow(Math.hypot(c._x-aim.x,c.y-aim.y)/(hw*1.6),2));if(k<.02)return;
+        ctx.save();ctx.translate(c._x,c.y);ctx.scale(1,c.ry/c.rx);var g=ctx.createRadialGradient(0,0,0,0,0,c.rx);g.addColorStop(0,'rgba(255,220,150,'+(c.a*2.2*k*P)+')');g.addColorStop(1,'rgba(255,220,150,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,c.rx,0,7);ctx.fill();ctx.restore()});
+      ctx.globalCompositeOperation='source-over';
+      {var ew=R*1.25,a=sent&&!still?flick(t-sentAt-120):1;ctx.save();ctx.globalAlpha=.88*a;ctx.translate(aim.x,aim.y);ctx.scale(ew/100,ew/100*.62);ctx.translate(-50,-22);ctx.fillStyle='#07080B';ctx.fill(BATP);ctx.restore()}
+      ctx.drawImage(city,0,0,W,H);
+      ctx.save();ctx.translate(lamp.x,lamp.y);ctx.rotate(Math.atan2(dy,dx));ctx.fillStyle='#16181D';ctx.fillRect(-9,-8,16,16);
+      ctx.fillStyle='rgb('+Math.round(58+197*P)+','+Math.round(59+182*P)+','+Math.round(63+138*P)+')';ctx.beginPath();ctx.ellipse(7,0,3,7,0,0,7);ctx.fill();ctx.restore();
+    }
+    function go(t){frame(t);if(on&&!RM.matches)raf=requestAnimationFrame(go)}
+    function start(){if(!on){on=true;raf=requestAnimationFrame(go)}}
+    build();frame(performance.now());
+    new IntersectionObserver(function(es){if(es[0].isIntersecting)start();else{on=false;cancelAnimationFrame(raf)}},{rootMargin:'100px'}).observe(root);
+    var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){build();frame(performance.now())},120)});
+    new MutationObserver(function(){build();frame(performance.now())}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(){build();frame(performance.now())});
+    new MutationObserver(function(){var s=root.classList.contains('sent');if(s&&!sent){sent=1;sentAt=performance.now()}else if(!s&&sent){sent=0}frame(performance.now());if(on)start()}).observe(root,{attributes:true,attributeFilter:['class']});
+  })();
 
   clock();setInterval(clock,30000);
 })();
