@@ -275,7 +275,9 @@ button{font:inherit;color:inherit}
   box-shadow:0 0 0 1px var(--ui-line),calc(var(--sx) * 10px) calc(var(--sy) * 10px) 26px -12px rgba(var(--shadow-rgb),.28),var(--glow);transition:box-shadow .5s var(--ease)}
 .proj:hover .frame{translate:0 -4px}
 .proj:hover .shot{box-shadow:0 0 0 1px var(--ui-line),calc(var(--sx) * 18px) calc(var(--sy) * 18px) 40px -14px rgba(var(--shadow-rgb),.34),var(--glow)}
-.cap{padding:20px 4px 0;display:grid;gap:6px}
+/* the caption fills the card, so the repository button sits on one line across a row whatever the copy length */
+.cap{flex:1;padding:20px 4px 0;display:flex;flex-direction:column;gap:6px}
+.cap > .gh{margin-top:auto}.cap .meta{margin-bottom:8px}
 .cap .row{display:flex;align-items:baseline;gap:12px}
 .cap .num{font:500 11.5px/1 var(--f-mono);color:var(--ink3)}
 .cap h3{font:400 28px/1.1 var(--f-display);letter-spacing:-.02em}
@@ -285,7 +287,7 @@ button{font:inherit;color:inherit}
 .cap .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font:400 11.5px/1.5 var(--f-mono);color:var(--ink3)}
 .cap .meta b{font-weight:500;color:var(--ink)}
 /* the repository button: a hairline pill with the GitHub mark; the arrow steps out on hover */
-.gh{display:inline-flex;align-items:center;gap:8px;margin-top:14px;width:max-content;padding:8px 13px 8px 11px;border-radius:999px;font-size:13px;font-weight:500;line-height:1;text-decoration:none;color:var(--ink);box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s,background .3s}
+.gh{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:8px 13px 8px 11px;border-radius:999px;font-size:13px;font-weight:500;line-height:1;text-decoration:none;color:var(--ink);box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s,background .3s}
 .gh-i{width:15px;height:15px;fill:currentColor;flex:none}
 .gh-a{font-size:12px;color:var(--ink3);transition:translate .3s var(--ease),color .3s}
 .gh:hover,.gh:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 60%,transparent);background:color-mix(in srgb,var(--acc) 6%,transparent)}
@@ -305,7 +307,7 @@ button{font:inherit;color:inherit}
   .cap .desc.open{display:block;-webkit-line-clamp:unset}
   .more{display:inline-block}
   .cap .meta{font-size:11px;gap:4px 12px;margin-top:6px}
-  .gh{margin-top:12px;min-height:36px}
+  .gh{min-height:36px}.cap .meta{margin-bottom:6px}
 }
 
 /* mini product UIs */
