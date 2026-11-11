@@ -36,7 +36,6 @@
   --sky1:#05060A; --sky2:#0D1018; --city:#030405; --horizon:rgba(242,193,78,.075);
   --tog-bg:radial-gradient(circle at 50% 45%,#FFF3CF 0 28%,#F2C14E 62%); --tog-sh:0 0 0 3px rgba(242,193,78,.16),0 0 14px rgba(242,193,78,.55);
   --hr-bg:radial-gradient(120% 90% at 20% 110%,rgba(242,193,78,.22),transparent 60%),linear-gradient(160deg,#1E2129,#0F1116);
-  --strap:linear-gradient(#16181D,#0E1014); --pouch:linear-gradient(#15171C,#0F1115); --rivet:#2A2D33;
   --moon:#EFE4C6; --moon-o:.82; --moon-glow:rgba(239,228,198,.13); --eye:#F4EBD3;
   --m1:#FFF8E4;--m2:#EFE4C6;--m3:#CDBE97;--m-shade:17px;--m-halo:.5;--m-glow:1;
   --sx:-.2; --sy:.9; color-scheme:dark;
@@ -57,7 +56,6 @@
   --sky1:#BFC5CE; --sky2:#ECE9E3; --city:#23262D; --horizon:rgba(255,255,255,.5);
   --tog-bg:radial-gradient(circle at 50% 45%,#F7F5F0 0 30%,#B9BCC3 70%); --tog-sh:0 0 0 3px rgba(21,22,26,.06);
   --hr-bg:linear-gradient(160deg,#CBD3DE,#A3B2C6 55%,#8395AF);
-  --strap:linear-gradient(#E2DED6,#D6D1C7); --pouch:linear-gradient(#FAF8F4,#EDEAE3); --rivet:#C9C4BA;
   --moon:#FFFFFF; --moon-o:.85; --moon-glow:rgba(255,255,255,.35); --eye:transparent;
   --m1:#FFFFFF;--m2:#E4E6EA;--m3:#B4B9C2;--m-shade:5.5px;--m-halo:0;--m-glow:0;
   --sx:.3; --sy:.5; color-scheme:light}}
@@ -72,7 +70,6 @@
   --sky1:#BFC5CE; --sky2:#ECE9E3; --city:#23262D; --horizon:rgba(255,255,255,.5);
   --tog-bg:radial-gradient(circle at 50% 45%,#F7F5F0 0 30%,#B9BCC3 70%); --tog-sh:0 0 0 3px rgba(21,22,26,.06);
   --hr-bg:linear-gradient(160deg,#CBD3DE,#A3B2C6 55%,#8395AF);
-  --strap:linear-gradient(#E2DED6,#D6D1C7); --pouch:linear-gradient(#FAF8F4,#EDEAE3); --rivet:#C9C4BA;
   --moon:#FFFFFF; --moon-o:.85; --moon-glow:rgba(255,255,255,.35); --eye:transparent;
   --m1:#FFFFFF;--m2:#E4E6EA;--m3:#B4B9C2;--m-shade:5.5px;--m-halo:0;--m-glow:0;
   --sx:.3; --sy:.5; color-scheme:light}
@@ -355,6 +352,8 @@ button{font:inherit;color:inherit}
 .talos .bb{fill:none;stroke:var(--acc);stroke-width:1.4}
 .talos .bbl{fill:var(--acc)}
 .talos .bbt{font:600 6.5px/1 "Geist Mono",monospace;fill:#111}
+/* the highest risk score in the frame is the one status colour in the scene */
+.talos .top .bb,.talos .top .ghost,.talos .top .trail{stroke:#E5553F}.talos .top .bbl{fill:#E5553F}.talos .top .bbt{fill:#fff}.talos .top .cf{fill:#E5553F}
 .talos .ghost{fill:none;stroke:var(--acc);stroke-width:1;stroke-dasharray:3 2.5;opacity:.75}
 .talos .trail{fill:none;stroke:var(--acc);stroke-width:1;stroke-dasharray:1.5 3;opacity:.7}
 .talos .hud{font:500 7.5px/1 "Geist Mono",monospace;fill:rgba(255,255,255,.9);letter-spacing:.06em}
@@ -364,40 +363,17 @@ button{font:inherit;color:inherit}
 @keyframes dl{from{transform:translateX(390px)}to{transform:translateX(-70px)}}
 @keyframes dd{from{transform:translateY(-60px)}to{transform:translateY(260px)}}
 
-/* skills: a quiet ledger, worn as a utility belt */
-.belt{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1fr 1fr auto 1fr 1fr 1fr;align-items:center;gap:clamp(6px,1.6vw,14px);margin:0 0 38px}
-.belt::before{content:"";position:absolute;z-index:-1;left:-12px;right:-12px;top:50%;height:16px;margin-top:-8px;border-radius:3px;background:var(--strap);box-shadow:0 0 0 1px var(--line2)}
-.belt::after{content:"";position:absolute;z-index:-1;left:-8px;right:-8px;top:50%;height:10px;margin-top:-5px;border-block:1px dashed rgba(236,230,216,.1)}
-.pouch{position:relative;display:grid;justify-items:center;gap:6px;padding:14px 6px 11px;border-radius:6px 6px 12px 12px;background:var(--pouch);box-shadow:0 0 0 1px var(--line);font:500 9.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);transition:box-shadow .35s,color .35s,translate .35s var(--ease)}
-.pouch::before{content:"";position:absolute;left:7px;right:7px;top:8px;height:1px;background:var(--line)}
-.pouch::after{content:"";position:absolute;left:50%;top:5px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--rivet);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.pouch b{font:400 24px/1 var(--f-display);letter-spacing:0;color:var(--ink2);text-transform:none;font-variant-numeric:tabular-nums}
-.pouch.on{color:var(--acc-text);translate:0 -3px;box-shadow:0 0 0 1px rgba(242,193,78,.5),0 14px 30px -14px rgba(242,193,78,.45)}
-.pouch.on b{color:var(--ink)}
-.buckle{display:grid;place-items:center;width:clamp(58px,8vw,74px);height:46px;border-radius:9px;background:linear-gradient(160deg,#2B2D33,#121418);box-shadow:0 0 0 1px var(--line),inset 0 1px 0 rgba(255,255,255,.07)}
-.buckle svg{width:72%;fill:var(--acc);filter:drop-shadow(0 0 8px rgba(242,193,78,.35))}
-.sg{transition:background .3s}
-.sg.on h4{color:var(--acc-text)}
-.skills{display:grid}
-.sg{display:grid;grid-template-columns:132px 1fr;gap:28px;padding:15px 0;border-top:1px solid var(--line2);align-items:baseline}
-.sg:first-child{border-top:0;padding-top:0}
-.sg h4{font:500 10.5px/1.6 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
-.sg ul{display:flex;flex-wrap:wrap;gap:4px 0;font-size:16px}
-.sg li{display:inline-flex;align-items:center}
-.sg li + li::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--ink3);margin:0 10px;opacity:.7}
+/* skills: a quiet ledger. A mono label, then the skills as plain type; the hairlines do the rest. */
+.skills{display:grid;border-bottom:1px solid var(--line2)}
+.sg{display:grid;grid-template-columns:168px 1fr;gap:32px;padding:19px 0 20px;border-top:1px solid var(--line2);align-items:baseline}
+.sg:first-child{border-top:0;padding-top:2px}
+.sg h4{font:500 10.5px/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);transition:color .3s}
+.sg:hover h4{color:var(--acc-text)}
+.sg ul{display:flex;flex-wrap:wrap;gap:4px 0;font-size:16px;line-height:1.5;color:var(--ink)}
+.sg li{display:inline-flex;align-items:center;white-space:nowrap}
+.sg li:not(:last-child)::after{content:"";width:3px;height:3px;border-radius:50%;background:var(--ink3);margin:0 11px;opacity:.6}
+@media (max-width:560px){.sg{grid-template-columns:1fr;gap:7px;padding:16px 0 17px}.sg ul{font-size:15.5px}.sg li:not(:last-child)::after{margin:0 9px}}
 @media (max-width:640px),(pointer:coarse){.more{padding:10px 0}.skip,.scroll{padding:12px 0}.brand{padding-block:8px}}
-/* skills v2: six groups in a hairline grid, each skill a quiet chip */
-.skills{grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--line2)}
-.skills .sg{display:grid;grid-template-columns:1fr;align-content:start;gap:12px;padding:18px 18px 20px;border-top:0;background:var(--bg);transition:background .3s}
-.skills .sg:first-child{padding-top:18px}
-.skills .sg.on{background:color-mix(in srgb,var(--acc) 5%,var(--bg))}
-.skills .sg ul{gap:6px;font-size:13.5px}
-.skills .sg li{padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px var(--line);line-height:1.3;color:var(--ink);transition:box-shadow .3s}
-.skills .sg li + li::before{content:none}
-.skills .sg.on li{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 45%,transparent)}
-@media (max-width:760px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:480px){.skills{grid-template-columns:1fr}.skills .sg{padding:16px}}
-@media (max-width:560px){.belt{display:none}.belt{gap:4px}.pouch{padding-inline:3px}.pouch span{display:none}.buckle{width:42px;height:38px}}
 
 /* contact: the rooftop signal. Your message powers the lamp; sending puts the emblem on the clouds. */
 .ra{position:relative;display:grid;grid-template-columns:minmax(0,370px) 1fr;min-height:580px;border-radius:14px;overflow:hidden;background:var(--sky1);box-shadow:0 0 0 1px var(--line2)}
@@ -608,6 +584,7 @@ button{font:inherit;color:inherit}
   <linearGradient id="g-sheen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
   <radialGradient id="g-coffee" cx=".45" cy=".42" r=".6"><stop offset="0" stop-color="#4A2C1A"/><stop offset=".72" stop-color="#2E1A0F"/><stop offset=".9" stop-color="#7A4E2E"/><stop offset="1" stop-color="#A27349"/></radialGradient>
   <radialGradient id="g-cup" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6E2DA"/></radialGradient>
+  <clipPath id="talos-clip"><rect width="320" height="200"/></clipPath>
   <linearGradient id="g-card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2470"/><stop offset="1" stop-color="#2E1248"/></linearGradient>
   <linearGradient id="g-pencil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7CF3E"/><stop offset=".5" stop-color="#EDBE22"/><stop offset="1" stop-color="#D9A812"/></linearGradient>
   <radialGradient id="g-shade" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#3A3631"/><stop offset="1" stop-color="#23201D"/></radialGradient>
@@ -683,11 +660,11 @@ button{font:inherit;color:inherit}
     <div class="sh"><span class="sn">FILE 03</span><h2>Projects</h2><span class="sk">Four exhibits.</span></div>
     <div class="projects">
       <article class="proj">
-        <div class="frame" data-x="print"><span class="exh" aria-hidden="true">EXHIBIT A</span><div class="shot"><svg class="talos run" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Aerial road with tracked cars in labelled boxes, one with a dashed predicted position" data-talos="run"></svg></div></div>
+        <div class="frame" data-x="print"><span class="exh" aria-hidden="true">EXHIBIT A</span><div class="shot"><svg class="talos run" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Satellite view of an airfield with tracked aircraft in boxes labelled with an ID and a risk score, the highest in red, and dashed predicted positions" data-talos="run"></svg></div></div>
         <div class="cap">
           <div class="row"><span class="num">01</span><h3>TALOS</h3><span class="yr">Feb 2026</span></div>
           <p class="what">Real-time aerial threat scoring.</p>
-          <p class="desc">YOLOv11 finds objects in live aerial video, a Kalman filter predicts where each goes next, and the Hungarian algorithm keeps IDs stable between frames.</p>
+          <p class="desc">YOLOv11 finds aircraft in satellite video, a Kalman filter predicts where each goes next, the Hungarian algorithm keeps IDs stable between frames, and every track gets a live risk score.</p>
           <p class="meta"><span><b>~66 FPS</b> · sub-15 ms/frame</span><span><b>~25%</b> fewer ID switches</span></p>
           <a class="gh" href="https://github.com/Gakshith/Tactical-Aerospace-Localization-Objective-Scoring-TALOS-" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
         </div>
@@ -755,8 +732,7 @@ button{font:inherit;color:inherit}
 
   <section class="sec page" id="skills">
     <div class="orn" aria-hidden="true"><span class="ob"><svg class="wake" viewBox="0 0 100 44"><path d="M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z"/></svg></span></div>
-    <div class="sh"><span class="sn">FILE 04</span><h2>Skills</h2><span class="sk">The utility belt.</span></div>
-    <div class="belt" id="belt" aria-hidden="true"><span class="pouch"><b>7</b><span>Code</span></span><span class="pouch"><b>6</b><span>Stack</span></span><span class="pouch"><b>4</b><span>Agents</span></span><span class="buckle"><svg viewBox="0 0 100 44" aria-hidden="true"><path d="M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z"/></svg></span><span class="pouch"><b>3</b><span>Evals</span></span><span class="pouch"><b>6</b><span>ML</span></span><span class="pouch"><b>4</b><span>Vision</span></span></div>
+    <div class="sh"><span class="sn">FILE 04</span><h2>Skills</h2><span class="sk">What I work with.</span></div>
     <div class="skills">
       <div class="sg"><h4>Languages</h4><ul><li>Python</li><li>C++</li><li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>Bash</li><li>pytest</li></ul></div>
       <div class="sg"><h4>Full-stack</h4><ul><li>React</li><li>Next.js</li><li>FastAPI</li><li>REST APIs</li><li>Docker</li><li>GitHub Actions</li></ul></div>
@@ -829,26 +805,40 @@ button{font:inherit;color:inherit}
   var root=document.documentElement,hero=document.querySelector('.hero');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* TALOS aerial scene in passes: raw frame, detections, tracks — layered on the print, combined elsewhere */
+  /* TALOS satellite scene in passes: raw frame, detections, tracks — layered on the print, combined elsewhere.
+     Aircraft over an airfield, as in the project: each track carries an ID and a risk score, the highest in red. */
   function rnd(s){return function(){s=(s*16807)%2147483647;return (s-1)/2147483646}}
   var TREES=(function(){var r=rnd(7),t='';
-    for(var k=0;k<70;k++){var x=r()*320,y=r()*200,z=4+r()*9;if((y>78&&y<132)||(x>196&&x<232))continue;
+    for(var k=0;k<70;k++){var x=r()*320,y=r()*200,z=4+r()*9;
       t+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+z.toFixed(1)+'" fill="'+(r()>.5?'#3C4C37':'#33422F')+'"/>'}return t})();
-  var CARS=[['c1',40,90,30,13,'#ECE9E2','017','r',1,.94],['c2',150,111,30,13,'#2C3036','042','l',0,.91],['c3',208,30,14,26,'#5D7591','003','v',1,.88],['c4',-40,90,30,13,'#9B3B30','051','r',0,.96]];
+  var FIELD=(function(){var t='<g transform="rotate(-9 160 100)"><rect x="-40" y="70" width="400" height="92" fill="#66705A"/><rect x="-40" y="84" width="400" height="22" fill="#4E5254"/>'
+      +'<path d="M-40 84.6H360M-40 105.4H360" stroke="#C9C6B8" stroke-width=".8"/><path d="M52 95H360" stroke="#E4E0D2" stroke-width="1.1" stroke-dasharray="14 10"/>';
+    for(var k=0;k<6;k++)t+='<rect x="22" y="'+(86.5+k*3.1)+'" width="14" height="1.7" fill="#E4E0D2"/>';
+    t+='<rect x="-40" y="124" width="400" height="8" fill="#5C6061"/><path d="M-40 128H360" stroke="#C9A93F" stroke-width=".7" opacity=".8"/>'
+      +'<rect x="78" y="106" width="8" height="18" fill="#5C6061"/><rect x="236" y="106" width="8" height="18" fill="#5C6061"/>'
+      +'<rect x="128" y="132" width="96" height="24" fill="#63676A"/>';
+    [134,163,192].forEach(function(x){t+='<rect x="'+(x+2.5)+'" y="139" width="24" height="13" fill="#000" opacity=".28"/><rect x="'+x+'" y="136" width="24" height="13" fill="#9A9EA1"/><path d="M'+x+' 142.5h24" stroke="#7C8084" stroke-width=".8"/>'});
+    return t+'</g>'})();
+  /* a delta-wing jet from above, nose toward +x */
+  var JET='M15 0L6-2L-2-11L-7-11L-5-2.5L-11-2L-14-6L-16-6L-15 0L-16 6L-14 6L-11 2L-5 2.5L-7 11L-2 11L6 2Z';
+  /* class, x, y, w, h, paint, track id, heading, shows a prediction, confidence, risk */
+  var CRAFT=[['c1',40,46,31,22,'#D9DCDD','3','r',1,.94,.71],['c2',150,112,31,22,'#3B4148','7','l',0,.91,.18],['c3',238,24,22,31,'#8494A3','0','v',1,.88,.44],['c4',-40,160,31,22,'#B9B4A6','12','r',0,.96,.32]];
+  var TOP=CRAFT.reduce(function(a,c){return c[10]>a[10]?c:a});
   function talosLayer(kind){
-    var base=kind==='base'||kind==='all',det=kind==='det'||kind==='all',trk=kind==='trk'||kind==='all',s='';
-    if(base)s+='<rect width="320" height="200" fill="#46553F"/>'+TREES+'<rect x="0" y="84" width="320" height="44" fill="#5A5E5E"/><rect x="202" y="0" width="26" height="200" fill="#5A5E5E"/><path d="M0 84H320M0 128H320" stroke="#8C8C84" stroke-width="1.2"/><path d="M0 106H198M232 106H320" stroke="#D9D4C3" stroke-width="1.2" stroke-dasharray="9 8"/><path d="M215 0V80M215 132V200" stroke="#D9D4C3" stroke-width="1" stroke-dasharray="8 8"/>';
-    CARS.forEach(function(c){
-      var x=c[1],y=c[2],w=c[3],h=c[4],d=c[7],o='<g class="car '+c[0]+'">';
-      if(base)o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3.5" fill="'+c[5]+'"/>'+(d==='v'?'<rect x="'+(x+2)+'" y="'+(y+h-9)+'" width="'+(w-4)+'" height="5" rx="1.5" fill="#56646E"/>':'<rect x="'+(x+(d==='r'?w-10:4))+'" y="'+(y+2)+'" width="6" height="'+(h-4)+'" rx="1.5" fill="#56646E"/>');
-      if(det)o+='<rect class="bb" x="'+(x-4)+'" y="'+(y-4)+'" width="'+(w+8)+'" height="'+(h+8)+'"/>';
-      if(kind==='det')o+='<text class="cf" x="'+(x-4)+'" y="'+(y+h+11)+'">car '+c[9].toFixed(2)+'</text>';
-      if(trk){o+='<rect class="bbl" x="'+(x-4)+'" y="'+(y-13)+'" width="31" height="9"/><text class="bbt" x="'+(x-1.5)+'" y="'+(y-6.5)+'">ID '+c[6]+'</text>';
-        if(c[8]){var gx=d==='r'?x+w+22:x,gy=d==='v'?y+h+20:y;
-          o+='<path class="trail" d="M'+(x+w/2)+' '+(y+h/2)+' L'+(gx+w/2)+' '+(gy+h/2)+'"/><rect class="ghost" x="'+(gx-4)+'" y="'+(gy-4)+'" width="'+(w+8)+'" height="'+(h+8)+'"/>'}}
+    var base=kind==='base'||kind==='all',det=kind==='det'||kind==='all',trk=kind==='trk'||kind==='all',s=s='<g clip-path="url(#talos-clip)">';
+    if(base)s+='<rect width="320" height="200" fill="#46553F"/>'+TREES+FIELD;
+    CRAFT.forEach(function(c){
+      var x=c[1],y=c[2],w=c[3],h=c[4],d=c[7],cx=x+w/2,cy=y+h/2,rot=d==='r'?0:d==='l'?180:90,o='<g class="craft '+c[0]+(c===TOP?' top':'')+'">';
+      if(base)o+='<path d="'+JET+'" transform="translate('+(cx+5)+' '+(cy+8)+') rotate('+rot+')" fill="#000" opacity=".26"/><path d="'+JET+'" transform="translate('+cx+' '+cy+') rotate('+rot+')" fill="'+c[5]+'"/><path d="M9 0L3-1.2V1.2Z" transform="translate('+cx+' '+cy+') rotate('+rot+')" fill="#56646E"/>';
+      if(det)o+='<rect class="bb" x="'+(x-3)+'" y="'+(y-3)+'" width="'+(w+6)+'" height="'+(h+6)+'"/>';
+      if(kind==='det')o+='<text class="cf" x="'+(x-3)+'" y="'+(y+h+10)+'">plane '+c[9].toFixed(2)+'</text>';
+      if(trk){var lb='ID '+c[6]+' · '+c[10].toFixed(2);
+        o+='<rect class="bbl" x="'+(x-3)+'" y="'+(y-12)+'" width="'+(lb.length*3.9+6).toFixed(1)+'" height="9"/><text class="bbt" x="'+(x-.5)+'" y="'+(y-5.5)+'">'+lb+'</text>';
+        if(c[8]){var gx=x+(d==='r'?w+20:d==='l'?-w-20:0),gy=y+(d==='v'?h+18:0);
+          o+='<path class="trail" d="M'+cx+' '+cy+' L'+(gx+w/2)+' '+(gy+h/2)+'"/><rect class="ghost" x="'+(gx-3)+'" y="'+(gy-3)+'" width="'+(w+6)+'" height="'+(h+6)+'"/>'}}
       s+=o+'</g>'});
     if(trk)s+='<text class="hud" x="26" y="18">TALOS · 66 FPS · 4 TRACKS</text>';
-    return s}
+    return s+'</g>'}
   document.querySelectorAll('[data-talos]').forEach(function(s){s.innerHTML=talosLayer('all');s.classList.add('talos')});
 
   /* San Francisco time */
@@ -874,10 +864,10 @@ button{font:inherit;color:inherit}
   var A={x:0,y:0,tx:0,ty:0,active:false,last:-1e9},M={x:-1e4,y:-1e4,on:false};
   var L={x:0,y:0},SIG={k:0,flare:-1e9},hazeN=null,hazeD=null,rain=[],dark=true,hz=0,went=false;
   var mqL=matchMedia('(prefers-color-scheme: light)');
-  var BAT=new Path2D('M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z'),SPR={},NF=8;
+  var BAT_D='M50 13L52.8 3.5L55.2 12C62 13.5 71 12.5 79 7L99 2.5Q95 12 95.5 22Q89 15.5 82.5 21Q77 14.5 69.5 24Q63 18.5 57.5 28.5Q53 31 50 41Q47 31 42.5 28.5Q37 18.5 30.5 24Q23 14.5 17.5 21Q11 15.5 4.5 22Q5 12 1 2.5L21 7C29 12.5 38 13.5 44.8 12L47.2 3.5L50 13Z',BAT=new Path2D(BAT_D),SPR={},NF=8;
   var roN=document.getElementById('ro-n'),roC=document.getElementById('ro-c'),roT=0,skipB=document.getElementById('skip');
   var seen=false;try{seen=sessionStorage.getItem('title-seen')==='1'}catch(e){}
-  var SEQ={emb:seen?2300:3200,name:seen?4300:5800};
+  var SEQ={emb:seen?2300:3200,name:seen?4700:6300};
   function isDark(){return root.getAttribute('data-theme')!=='light'}
   function readCols(){dark=isDark();var tl=document.getElementById('tog-l'),fm=document.getElementById('foot-mode');if(tl)tl.textContent=dark?'Night':'Day';if(fm)fm.textContent=dark?'After dark':'Morning fog'}
   function wing(c,w,h,f){
@@ -902,14 +892,38 @@ button{font:inherit;color:inherit}
     g.globalCompositeOperation='source-in';g.fillStyle=col;g.fillRect(0,0,w,h);
     return c;
   }
-  // sample a filled shape into roughly N evenly spaced points
-  function grid(draw,w,h,N,ox,oy){
-    var c=document.createElement('canvas');c.width=Math.max(1,Math.ceil(w));c.height=Math.max(1,Math.ceil(h));var g=c.getContext('2d');g.fillStyle='#000';draw(g);
-    var d=g.getImageData(0,0,c.width,c.height).data,area=0;
-    for(var i=3;i<d.length;i+=8)if(d[i]>110)area+=2;
-    var st=Math.max(2,Math.sqrt(area/Math.max(1,N))),pts=[];
-    for(var y=st/2;y<c.height;y+=st)for(var x=st/2;x<c.width;x+=st){if(d[((y|0)*c.width+(x|0))*4+3]>110)pts.push([ox+x+(Math.random()-.5)*st*.6,oy+y+(Math.random()-.5)*st*.6])}
-    return {pts:pts,st:st};
+  // the emblem as exactly N perches: a rank of bats traces the outline so the ears, wing tips and
+  // scallops stay sharp, and the rest fill the inside on a mirrored honeycomb. Nothing is dropped at
+  // random (that left holes) and both wings match.
+  function emblem(ew,eh,N,ox,oy){
+    var k=ew/100,cw=Math.ceil(ew),ch=Math.ceil(eh),c=document.createElement('canvas');c.width=cw;c.height=ch;
+    var g=c.getContext('2d',{willReadFrequently:true});g.scale(k,k);g.fillStyle='#000';g.fill(BAT);
+    var d=g.getImageData(0,0,cw,ch).data,area=0,i,j;
+    for(i=3;i<d.length;i+=4)if(d[i]>110)area++;
+    var st=Math.max(2,Math.sqrt(area/Math.max(1,N))),inset=st*.45,pts=[];
+    function inside(x,y){x|=0;y|=0;return x>=0&&y>=0&&x<cw&&y<ch&&d[(y*cw+x)*4+3]>110}
+    var pe=document.createElementNS('http://www.w3.org/2000/svg','path');pe.setAttribute('d',BAT_D);
+    var len=0;try{len=pe.getTotalLength()}catch(e){}
+    if(len>0){var n=Math.min(Math.floor(N*.45),Math.floor(len*k/(st*.92)));
+      for(i=0;i<n;i++){var s=(i+.5)/n*len,p=pe.getPointAtLength(s),p2=pe.getPointAtLength(Math.min(len,s+.3)),p0=pe.getPointAtLength(Math.max(0,s-.3));
+        var tx=p2.x-p0.x,ty=p2.y-p0.y,tl=Math.hypot(tx,ty)||1,nx=-ty/tl*inset,ny=tx/tl*inset,x=p.x*k,y=p.y*k;
+        if(inside(x+nx,y+ny)){x+=nx;y+=ny}else if(inside(x-nx,y-ny)){x-=nx;y-=ny}
+        pts.push([x,y])}
+      // the outline rank owns the rim; the fill starts one rank in
+      g.globalCompositeOperation='destination-out';g.lineJoin='round';g.lineWidth=(inset+st*.62)*2/k;g.stroke(BAT);
+      d=g.getImageData(0,0,cw,ch).data}
+    var need=N-pts.length,ar2=0;for(i=3;i<d.length;i+=4)if(d[i]>110)ar2++;
+    var s2=Math.max(2,Math.sqrt(ar2/Math.max(1,need))),fill=[];
+    for(var tries=0;tries<14;tries++){fill=[];var dx=s2*1.0746,dy=s2*.9306,row=0;
+      for(var y2=dy/2;y2<ch;y2+=dy,row++)for(j=0;;j++){var xo=row%2?j*dx:(j+.5)*dx;if(xo>cw/2)break;
+        if(inside(cw/2+xo,y2))fill.push([cw/2+xo,y2]);
+        if(xo>0&&inside(cw/2-xo,y2))fill.push([cw/2-xo,y2])}
+      if(fill.length<=need)break;s2*=1.015}
+    // loosen the fill so it reads as a colony, not ruled lines; the rim stays put
+    pts=pts.concat(fill.map(function(q){return [q[0]+(Math.random()-.5)*s2*.3,q[1]+(Math.random()-.5)*s2*.5]}));
+    // a handful left over share a perch
+    while(pts.length<N&&pts.length){var q=pts[(Math.random()*pts.length)|0];pts.push([q[0]+(Math.random()-.5)*st*.5,q[1]+(Math.random()-.5)*st*.5])}
+    return {pts:pts.slice(0,N).map(function(q){return [ox+q[0]+(Math.random()-.5)*st*.12,oy+q[1]+(Math.random()-.5)*st*.12]}),st:st};
   }
   function layoutName(){
     var hr=hero.getBoundingClientRect();W=hr.width;H=hr.height;dpr=Math.min(2,window.devicePixelRatio||1);
@@ -940,9 +954,7 @@ button{font:inherit;color:inherit}
     box={x:ox,y:oy,w:sr.width,h:bh};V={x:ox+sr.width/2,y:oy+bh/2};
     // the emblem the colony forms first, centred on the name
     var ew=Math.min(W*(two?.86:.5),640),eh=ew*.44;
-    var E=grid(function(g){g.scale(ew/100,ew/100);g.fill(BAT)},ew,eh,pts.length,V.x-ew/2,V.y-eh/2),ep=shuffle(E.pts);
-    while(ep.length<pts.length){var q=ep[(Math.random()*ep.length)|0];ep.push([q[0]+(Math.random()-.5)*E.st,q[1]+(Math.random()-.5)*E.st])}
-    ep=ep.slice(0,pts.length).sort(function(a,b){return a[0]-b[0]});
+    var E=emblem(ew,eh,pts.length,V.x-ew/2,V.y-eh/2),ep=E.pts.sort(function(a,b){return a[0]-b[0]});
     embS=Math.max(1,Math.min(2.4,E.st/st));
     // the river: in low from the left, rising into a vortex around the title
     ORX=Math.max(box.w*.36,ew*.5);ORY=Math.max(box.h*.75,eh*.7);
@@ -1068,7 +1080,7 @@ button{font:inherit;color:inherit}
       if(still){b.x=b.tx;b.y=b.ty;b.vx=b.vy=0;b.m=3;b.sc=1}
       else{
         if(b.m===0){if(age<b.d)continue;b.m=1;spawn(b,STR[b.col]+gauss()*.22)}
-        var tE=SEQ.emb<0?-1:SEQ.emb+b.off*.9,tN=SEQ.name+((b.tx-box.x)/Math.max(1,box.w))*650+b.off*.25;
+        var tE=SEQ.emb<0?-1:SEQ.emb+b.off*.5,tN=SEQ.name+((b.tx-box.x)/Math.max(1,box.w))*650+b.off*.25;
         if(b.m===1){
           if((tE>=0&&age>=tE)||age>=tN){b.m=2;b.t0=age}
           else wild(b,V.x,V.y,vR*ORX,vR*ORY,dt,k6);
@@ -1228,10 +1240,6 @@ button{font:inherit;color:inherit}
   document.querySelectorAll('.cap .desc').forEach(function(d){var b=document.createElement('button');b.type='button';b.className='more';b.textContent='More';b.setAttribute('aria-expanded','false');
     b.addEventListener('click',function(){var o=d.classList.toggle('open');b.textContent=o?'Less':'More';b.setAttribute('aria-expanded',o)});d.after(b)});
 
-  /* the belt answers the ledger */
-  var pouches=[].slice.call(document.querySelectorAll('#belt .pouch')),rows=[].slice.call(document.querySelectorAll('.sg'));
-  rows.forEach(function(r,i){r.addEventListener('pointerenter',function(){pouches[i]&&pouches[i].classList.add('on');r.classList.add('on')});r.addEventListener('pointerleave',function(){pouches[i]&&pouches[i].classList.remove('on');r.classList.remove('on')})});
-
   /* ── exploded view: click a desk object and it comes apart into the layers that make it ── */
   var KEYS='';for(var kr=0;kr<5;kr++)for(var kc=0;kc<13;kc++)KEYS+='<rect x="'+(33+kc*21.6).toFixed(1)+'" y="'+(30+kr*22)+'" width="18" height="18" rx="3.5" fill="#2B2D31"/>';
   function paper(){return '<rect x="1" y="12" width="202" height="237" rx="3" fill="#FDFCF8" stroke="#E2DED4"/><g stroke="#A9C1DF" stroke-width=".9" opacity=".7"><path d="M1 70H203M1 100H203M1 130H203M1 160H203M1 190H203M1 220H203"/></g><path d="M34 12V249" stroke="#E7A3A3" stroke-width=".9"/>'}
@@ -1239,13 +1247,13 @@ button{font:inherit;color:inherit}
   function tw(k){return '<svg x="10" y="10" width="280" height="175" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" class="talos run">'+talosLayer(k)+'</svg>'}
   var X={
     print:{name:'TALOS frame',vb:[300,224],kick:'Fig. 01 · TALOS · one frame, four passes',title:'TALOS',sub:'Real-time aerial threat scoring.',
-      body:'Every frame is read in passes. YOLOv11 finds the objects, a Kalman filter predicts where each one goes next, and the Hungarian algorithm matches them to tracks so IDs never swap. A composite score weighs urgency, intent and proximity.',
+      body:'Every satellite frame is read in passes. YOLOv11 finds the aircraft, a Kalman filter predicts where each one goes next, and the Hungarian algorithm matches them to tracks so IDs never swap. A composite score weighs urgency, intent and proximity.',
       link:['TALOS on GitHub','https://github.com/Gakshith/Tactical-Aerospace-Localization-Objective-Scoring-TALOS-'],
       layers:[
-        {n:'The print',t:'Six by four, glossy. Some results deserve a desk.',a:'<rect width="300" height="224" rx="2" fill="#FBFAF6"/>'+hand(14,209,'frame 2,184 — four tracks, no ID swaps',17,'#3A3A40')},
-        {n:'Raw frame',t:'Live aerial surveillance video, nothing added.',a:tw('base')},
-        {n:'Detections · YOLOv11',t:'A box around every vehicle, under 15 ms a frame (~66 FPS).',a:tw('det'),glass:1},
-        {n:'Tracks · Kalman + Hungarian',t:'Dashed boxes are predictions. Stable IDs, ~25% fewer switches.',a:tw('trk'),glass:1}]},
+        {n:'The print',t:'Six by four, glossy. Some results deserve a desk.',a:'<rect width="300" height="224" rx="2" fill="#FBFAF6"/>'+hand(14,209,'frame 2,184 — four aircraft, no ID swaps',17,'#3A3A40')},
+        {n:'Raw frame',t:'Satellite footage of an airfield, nothing added.',a:tw('base')},
+        {n:'Detections · YOLOv11',t:'A box around every aircraft, under 15 ms a frame (~66 FPS).',a:tw('det'),glass:1},
+        {n:'Tracks · Kalman + Hungarian',t:'Dashed boxes are predictions. Stable IDs (~25% fewer switches), each with a risk score; the highest turns red.',a:tw('trk'),glass:1}]},
     laptop:{name:'Laptop',vb:[340,236],kick:'Fig. 02 · Laptop · four layers',title:'Where it gets built',sub:'Python and PyTorch for models, Swift for the tools around them.',
       body:'Most of my work starts here as a small script and ends as a system that checks its own output. The screen is open on the line I care about most.',
       layers:[
