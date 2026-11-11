@@ -284,8 +284,13 @@ button{font:inherit;color:inherit}
 .cap .desc{font-size:14.5px;line-height:1.65;color:var(--ink2);margin-top:4px}
 .cap .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font:400 11.5px/1.5 var(--f-mono);color:var(--ink3)}
 .cap .meta b{font-weight:500;color:var(--ink)}
-.gh{display:inline-flex;align-items:center;gap:6px;margin-top:10px;width:max-content;font-size:13.5px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px;transition:gap .3s var(--ease),border-color .3s}
-.gh:hover{gap:11px;border-color:var(--acc)}
+/* the repository button: a hairline pill with the GitHub mark; the arrow steps out on hover */
+.gh{display:inline-flex;align-items:center;gap:8px;margin-top:14px;width:max-content;padding:8px 13px 8px 11px;border-radius:999px;font-size:13px;font-weight:500;line-height:1;text-decoration:none;color:var(--ink);box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s,background .3s}
+.gh-i{width:15px;height:15px;fill:currentColor;flex:none}
+.gh-a{font-size:12px;color:var(--ink3);transition:translate .3s var(--ease),color .3s}
+.gh:hover,.gh:focus-visible{box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 60%,transparent);background:color-mix(in srgb,var(--acc) 6%,transparent)}
+.gh:hover .gh-a,.gh:focus-visible .gh-a{translate:2px -2px;color:var(--acc-text)}
+@media (prefers-reduced-motion:reduce){.gh,.gh-a{transition:none}}
 @media (max-width:900px){.projects{grid-template-columns:1fr;gap:56px}}
 .more{display:none;width:max-content;border:0;background:none;padding:2px 0;cursor:pointer;font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--acc-text)}
 @media (max-width:640px){
@@ -300,7 +305,7 @@ button{font:inherit;color:inherit}
   .cap .desc.open{display:block;-webkit-line-clamp:unset}
   .more{display:inline-block}
   .cap .meta{font-size:11px;gap:4px 12px;margin-top:6px}
-  .gh{margin-top:8px;min-height:32px}
+  .gh{margin-top:12px;min-height:36px}
 }
 
 /* mini product UIs */
@@ -693,7 +698,7 @@ button{font:inherit;color:inherit}
           <p class="what">Real-time aerial threat scoring.</p>
           <p class="desc">YOLOv11 finds aircraft in satellite video, a Kalman filter predicts where each goes next, the Hungarian algorithm keeps IDs stable between frames, and every track gets a live risk score.</p>
           <p class="meta"><span><b>~66 FPS</b> · sub-15 ms/frame</span><span><b>~25%</b> fewer ID switches</span></p>
-          <a class="gh" href="https://github.com/Gakshith/Tactical-Aerospace-Localization-Objective-Scoring-TALOS-" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+          <a class="gh" href="https://github.com/Gakshith/Tactical-Aerospace-Localization-Objective-Scoring-TALOS-" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
         </div>
       </article>
       <article class="proj">
@@ -711,7 +716,7 @@ button{font:inherit;color:inherit}
           <p class="what">Hallucination detection middleware.</p>
           <p class="desc">Retrieves evidence, samples several answers, verifies their reasoning traces, and abstains when confidence falls below a calibrated threshold.</p>
           <p class="meta"><span><b>Qwen2.5 + LoRA</b></span><span>FAISS · FastAPI · Docker</span></p>
-          <a class="gh" href="https://github.com/Gakshith/SafeResponse_Engine" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+          <a class="gh" href="https://github.com/Gakshith/SafeResponse_Engine" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
         </div>
       </article>
       <article class="proj">
@@ -732,7 +737,7 @@ button{font:inherit;color:inherit}
           <p class="what">Multi-agent scientific reasoning.</p>
           <p class="desc">Solver and critic agents read papers end to end and revise until a solution passes review; an embedding judge scores it against the authors’ own.</p>
           <p class="meta"><span><b>1,214</b> ICLR 2025 papers</span><span>LangChain · Qwen3-Embedding</span></p>
-          <a class="gh" href="https://github.com/Gakshith/AINSTEIN-Research-Paper" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+          <a class="gh" href="https://github.com/Gakshith/AINSTEIN-Research-Paper" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
         </div>
       </article>
       <article class="proj">
@@ -751,7 +756,7 @@ button{font:inherit;color:inherit}
           <p class="what">How much AI you have left, in the menu bar.</p>
           <p class="desc">A native macOS app tracking quota, daily and weekly limits, multiple accounts and burn-rate forecasts for Claude Code, Codex and Cursor.</p>
           <p class="meta"><span><b>Swift</b> · SwiftUI</span><span>macOS menu bar</span></p>
-          <a class="gh" href="https://github.com/Gakshith/Headroom" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+          <a class="gh" href="https://github.com/Gakshith/Headroom" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
         </div>
       </article>
     </div>
