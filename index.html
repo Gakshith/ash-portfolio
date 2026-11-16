@@ -308,6 +308,17 @@ button{font:inherit;color:inherit}
   .more{display:inline-block}
   .cap .meta{font-size:11px;gap:4px 12px;margin-top:6px}
   .gh{min-height:36px}.cap .meta{margin-bottom:6px}
+  /* phone: GitHub sits as a round icon at the card's top right, in line with the title */
+  .cap{position:relative}
+  .cap .row{padding-right:48px}
+  .cap > .gh{position:absolute;top:12px;right:4px;margin:0;padding:0;width:36px;height:36px;justify-content:center;gap:0}
+  .cap > .gh .gh-i{width:17px;height:17px}
+  .cap > .gh .gh-a{display:none}
+  .cap > .gh span:not(.gh-a){position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  /* phone: contact links and footer centred */
+  .c-foot{justify-content:center}
+  .foot{flex-direction:column;align-items:center;text-align:center}
+  footer.foot .r{text-align:center}  /* beats the later base .foot .r rule */
 }
 
 /* mini product UIs */
@@ -582,6 +593,7 @@ button{font:inherit;color:inherit}
 .xv-list li.on{opacity:1;transform:none}
 .xv-list .n{font:500 10.5px/1.75 var(--f-mono);color:var(--ink3);transition:color .2s}
 .xv-list b{font-weight:500;font-size:14px;min-height:1.3em}
+.xv-list b:empty{display:none}
 .xv-list .t{grid-column:2;font-size:13.5px;line-height:1.5;color:var(--ink2);min-height:1.5em}
 .xv-list li.hi .n{color:var(--acc-text)}
 .xv-list li.hi b{color:var(--ink)}
@@ -697,9 +709,9 @@ button{font:inherit;color:inherit}
         <div class="frame" data-x="print"><span class="exh" aria-hidden="true">EXHIBIT A</span><div class="shot"><svg class="talos run" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Satellite view of an airfield with tracked aircraft in boxes labelled with an ID and a risk score, the highest in red, and dashed predicted positions" data-talos="run"></svg></div></div>
         <div class="cap">
           <div class="row"><span class="num">01</span><h3>TALOS</h3><span class="yr">Feb 2026</span></div>
-          <p class="what">Real-time aerial threat scoring.</p>
-          <p class="desc">YOLOv11 finds aircraft in satellite video, a Kalman filter predicts where each goes next, the Hungarian algorithm keeps IDs stable between frames, and every track gets a live risk score.</p>
-          <p class="meta"><span><b>~66 FPS</b> · sub-15 ms/frame</span><span><b>~25%</b> fewer ID switches</span></p>
+          <p class="what">Aircraft and ship tracking in satellite video.</p>
+          <p class="desc">A tiled YOLO detector finds aircraft and ships in satellite video, a Kalman-filter tracker keeps their IDs, and a learned model gives each target its probability of entering a protected zone.</p>
+          <p class="meta"><span><b>77.4 HOTA</b> · 1st of 5 trackers</span><span><b>98.4%</b> aircraft AP50</span></p>
           <a class="gh" href="https://github.com/Gakshith/Tactical-Aerospace-Localization-Objective-Scoring-TALOS-" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
         </div>
       </article>
@@ -872,7 +884,7 @@ button{font:inherit;color:inherit}
         if(c[8]){var gx=x+(d==='r'?w+20:d==='l'?-w-20:0),gy=y+(d==='v'?h+18:0);
           o+='<path class="trail" d="M'+cx+' '+cy+' L'+(gx+w/2)+' '+(gy+h/2)+'"/><rect class="ghost" x="'+(gx-3)+'" y="'+(gy-3)+'" width="'+(w+6)+'" height="'+(h+6)+'"/>'}}
       s+=o+'</g>'});
-    if(trk)s+='<text class="hud" x="26" y="18">TALOS · 66 FPS · 4 TRACKS</text>';
+    if(trk)s+='<text class="hud" x="26" y="18">TALOS · 4 TRACKS</text>';
     return s+'</g>'}
   document.querySelectorAll('[data-talos]').forEach(function(s){s.innerHTML=talosLayer('all');s.classList.add('talos')});
 
@@ -1294,14 +1306,14 @@ button{font:inherit;color:inherit}
   function hand(x,y,t,sz,c){return '<text x="'+x+'" y="'+y+'" font-family="Caveat,cursive" font-weight="600" font-size="'+(sz||20)+'" fill="'+(c||'#26324F')+'">'+t+'</text>'}
   function tw(k){return '<svg x="10" y="10" width="280" height="175" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" class="talos run">'+talosLayer(k)+'</svg>'}
   var X={
-    print:{name:'TALOS frame',vb:[300,224],kick:'Fig. 01 · TALOS · one frame, four passes',title:'TALOS',sub:'Real-time aerial threat scoring.',
-      body:'Every satellite frame is read in passes. YOLOv11 finds the aircraft, a Kalman filter predicts where each one goes next, and the Hungarian algorithm matches them to tracks so IDs never swap. A composite score weighs urgency, intent and proximity.',
+    print:{name:'TALOS frame',vb:[300,224],kick:'Fig. 01 · TALOS · one frame, four passes',title:'TALOS',sub:'Aircraft and ship tracking in satellite video.',
+      body:'TALOS watches satellite video and flags the aircraft and ships most likely to enter a protected zone. It finds every target, follows each one from frame to frame, and scores how likely it is to cross into the zone.',
       link:['TALOS on GitHub','https://github.com/Gakshith/Tactical-Aerospace-Localization-Objective-Scoring-TALOS-'],
       layers:[
-        {n:'The print',t:'Six by four, glossy. Some results deserve a desk.',a:'<rect width="300" height="224" rx="2" fill="#FBFAF6"/>'+hand(14,209,'frame 2,184 — four aircraft, no ID swaps',17,'#3A3A40')},
-        {n:'Raw frame',t:'Satellite footage of an airfield, nothing added.',a:tw('base')},
-        {n:'Detections · YOLOv11',t:'A box around every aircraft, under 15 ms a frame (~66 FPS).',a:tw('det'),glass:1},
-        {n:'Tracks · Kalman + Hungarian',t:'Dashed boxes are predictions. Stable IDs (~25% fewer switches), each with a risk score; the highest turns red.',a:tw('trk'),glass:1}]},
+        {n:'',t:'Made GPU inference 2.1× faster with TensorRT FP16 at equal accuracy; deployed as a public AWS Lambda API (Docker, CI/CD).',a:'<rect width="300" height="224" rx="2" fill="#FBFAF6"/>'+hand(14,209,'frame 2,184 — four aircraft, no ID swaps',17,'#3A3A40')},
+        {n:'',t:'Replaced a hand-tuned risk score with a model that predicts the probability of each target entering a protected zone, raising AUROC from 0.92 to 0.98 on a test satellite dataset.',a:tw('base')},
+        {n:'',t:'Developed a Kalman-filter multi-object tracker and benchmarked it against SORT, ByteTrack, OC-SORT and BoT-SORT with the same detections and tuning budget. It ranked first on aircraft: 77.4 HOTA, 96.4 IDF1 (BoT-SORT: 75.0, 92.4) with zero ID switches.',a:tw('det'),glass:1},
+        {n:'',t:'Built an end-to-end computer vision system that detects, tracks and ranks the threat of aircraft and ships in real satellite video. Retraining a tiled YOLO detector raised aircraft AP50 on held-out test video from 0.7% to 98.4%.',a:tw('trk'),glass:1}]},
     laptop:{name:'Laptop',vb:[340,236],kick:'Fig. 02 · Laptop · four layers',title:'Where it gets built',sub:'Python and PyTorch for models, Swift for the tools around them.',
       body:'Most of my work starts here as a small script and ends as a system that checks its own output. The screen is open on the line I care about most.',
       layers:[
@@ -1416,7 +1428,7 @@ button{font:inherit;color:inherit}
     queue=[{el:el.kick,txt:spec.kick,cps:120},{el:el.title,txt:spec.title,cps:34},{el:el.sub,txt:spec.sub,cps:70},{el:el.body,txt:spec.body,cps:150}];
     [].forEach.call(el.list.children,function(li){
       var j=+li.dataset.j,L=spec.layers[j];
-      queue.push({el:li.querySelector('b'),txt:L.n,cps:55,pre:function(){li.classList.add('on');hi(j)}});
+      queue.push({el:L.n?li.querySelector('b'):null,txt:L.n,cps:55,pre:function(){li.classList.add('on');hi(j)}});
       queue.push({el:li.querySelector('.t'),txt:L.t,cps:120});
       queue.push({wait:160,post:function(){}});
     });
