@@ -621,19 +621,15 @@ button{font:inherit;color:inherit}
 .xv.settled .xl-n{transition-delay:0s}
 .xl.hi{--lift:26px}
 .xl.hi .xl-n{background:var(--acc);color:#1C1A17}
-.xv.focus .xl:not(.hi){opacity:.26}
-.xv-plate{position:absolute;inset:-8%;border-radius:16px;transform:translateZ(calc(var(--lo) * var(--gap) - 10px));opacity:0;transition:opacity .6s .55s;
-  background:linear-gradient(color-mix(in srgb,var(--ink) 10%,transparent) 1px,transparent 1px) 0 0/10% 10%,linear-gradient(90deg,color-mix(in srgb,var(--ink) 10%,transparent) 1px,transparent 1px) 0 0/10% 10%;
-  box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 14%,transparent),0 50px 80px -30px rgba(var(--shadow-rgb),.35)}
+.xl svg{transition:opacity .3s,filter .3s}
+.xv.focus .xl:not(.hi) svg{opacity:.34;filter:grayscale(1)}
+.xl-p,.xl-pa,.xl-pb{position:absolute;width:1px;height:1px;pointer-events:none}.xl-p{right:0;top:0}
+.xv-plate{position:absolute;inset:4%;border-radius:24px;transform:translateZ(calc(var(--lo) * var(--gap) - 34px));opacity:0;transition:opacity .6s .55s;
+  background:rgba(var(--shadow-rgb),calc(.16 + var(--night) * .3));filter:blur(22px)}
 .xv.exploded .xv-plate{opacity:1}
 .xv.closing .xv-plate{transition:opacity .25s}
-.xv-post{position:absolute;width:1px;height:0;transform-origin:top;transform:translateZ(calc(var(--lo) * var(--gap))) rotateX(90deg);
-  background:repeating-linear-gradient(to bottom,color-mix(in srgb,var(--ink) 45%,transparent) 0 3px,transparent 3px 7px);transition:height .9s var(--ease) .6s}
-.xv.exploded .xv-post{height:var(--len)}
-.xv.closing .xv-post{transition:height .3s}
 
-.xv-panel{position:fixed;right:clamp(16px,5vw,80px);top:50%;width:min(430px,38vw);max-height:86vh;overflow:auto;padding:28px 28px 22px;border-radius:22px;
-  background:color-mix(in srgb,var(--surface) 90%,transparent);box-shadow:0 0 0 1px var(--line2),0 40px 80px -40px rgba(var(--shadow-rgb),.45);
+.xv-panel{position:fixed;right:clamp(16px,5vw,80px);top:50%;width:min(400px,33vw);max-height:90vh;overflow:auto;padding:8px 4px 8px 0;
   opacity:0;transform:translateY(-46%);transition:opacity .5s .35s,transform .8s var(--ease) .35s;scrollbar-width:thin}
 .xv.in .xv-panel{opacity:1;transform:translateY(-50%)}
 .xv.closing .xv-panel{transition:opacity .3s,transform .4s;opacity:0}
@@ -643,13 +639,13 @@ button{font:inherit;color:inherit}
 .xv-sub{margin-top:8px;min-height:1.35em;font:italic 300 18px/1.35 var(--f-display);color:var(--ink2)}
 .xv-body{margin-top:14px;min-height:3.3em;font-size:14.5px;line-height:1.65;color:var(--ink2)}
 .xv-list{margin-top:18px;border-top:1px solid var(--line)}
-.xv-list li{display:grid;grid-template-columns:30px 1fr;gap:3px 8px;padding:11px 6px 11px 0;border-bottom:1px solid var(--line2);opacity:0;transform:translateY(6px);transition:opacity .35s,transform .45s var(--ease)}
+.xv-list li{display:grid;grid-template-columns:36px 1fr;gap:2px 8px;padding:12px 6px 12px 0;border-bottom:1px solid var(--line2);opacity:0;transform:translateY(6px);transition:opacity .35s,transform .45s var(--ease)}
 .xv-list li.on{opacity:1;transform:none}
-.xv-list .n{font:500 10.5px/1.75 var(--f-mono);color:var(--ink3);transition:color .2s}
+.xv-list .n{grid-row:span 2;align-self:start;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:500 9.5px/1 var(--f-mono);color:var(--ink3);background:var(--surface2);box-shadow:0 0 0 1px var(--line);transition:color .2s,background .2s,box-shadow .2s}
 .xv-list b{font-weight:500;font-size:14px;min-height:1.3em}
 .xv-list b:empty{display:none}
 .xv-list .t{grid-column:2;font-size:13.5px;line-height:1.5;color:var(--ink2);min-height:1.5em}
-.xv-list li.hi .n{color:var(--acc-text)}
+.xv-list li.hi .n{color:#1C1A17;background:var(--acc);box-shadow:none}
 .xv-list li.hi b{color:var(--ink)}
 .caret{display:inline-block;width:.42em;height:1em;margin-left:2px;vertical-align:-.14em;background:var(--acc);animation:blink .9s steps(1) infinite}
 .xv-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;font:400 11.5px/1 var(--f-mono);color:var(--ink3)}
@@ -664,8 +660,20 @@ button{font:inherit;color:inherit}
 .xv.in .xv-hint{opacity:1}
 .xv-hint kbd{font:inherit;padding:2px 6px;border-radius:5px;box-shadow:0 0 0 1px var(--line);color:var(--ink2)}
 .xv.instant,.xv.instant *{transition:none!important}
+.xv-lead{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;opacity:0;transition:opacity .4s}
+.xv.exploded .xv-lead{opacity:1;transition:opacity .6s .9s}.xv.swap .xv-lead,.xv.closing .xv-lead{opacity:0;transition:opacity .2s}
+.xv-lead .ln{fill:none;stroke:var(--ink3);stroke-opacity:.6;stroke-width:1;transition:stroke .25s}
+.xv-lead .dt{fill:var(--ink3);transition:fill .25s}
+.xv-lead .ln.on{stroke:var(--acc);stroke-opacity:1}.xv-lead .dt.on{fill:var(--acc)}
+.xv-lead .pp{fill:none;stroke:var(--acc);stroke-width:1.6;stroke-dasharray:5 5;animation:xv-pp .9s linear infinite}
+.xv-lead .pa{fill:var(--acc)}
+.xv-lead .pt{font:500 10px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;fill:var(--acc-text)}
+@keyframes xv-pp{to{stroke-dashoffset:-10}}
+@media (min-width:821px){.xl-n{display:none}}
 @media (max-width:820px){
-  .xv-panel{left:12px;right:12px;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);width:auto;max-height:50vh;padding:20px 20px 16px;transform:translateY(12px)}
+  .xv-panel{left:12px;right:12px;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);width:auto;max-height:50vh;padding:20px 20px 16px;transform:translateY(12px);border-radius:22px;
+    background:color-mix(in srgb,var(--surface) 92%,transparent);box-shadow:0 0 0 1px var(--line2),0 40px 80px -40px rgba(var(--shadow-rgb),.45)}
+  .xv-lead .ln,.xv-lead .dt{display:none}
   .xv.in .xv-panel{transform:none}
   .xv-title{font-size:30px}
   .xv-hint{display:none}
@@ -774,46 +782,7 @@ button{font:inherit;color:inherit}
         </div>
       </article>
       <article class="proj">
-        <div class="frame" data-x="laptop"><span class="exh" aria-hidden="true">EXHIBIT B</span><div class="shot"><div class="ui">
-          <div class="ui-top"><span class="dots"><i></i><i></i><i></i></span><b>SafeResponse</b><span style="margin-left:auto">/v1/answer</span></div>
-          <div class="sr-body">
-            <p class="bub q">When did the Golden Gate Bridge get its second deck?</p>
-            <div class="bub a"><b>Abstained</b>No retrieved source mentions a second deck. The question may rest on a false premise.</div>
-            <div class="conf"><div class="conf-row"><span>confidence 0.28</span><span>threshold 0.60</span></div><div class="meter"><i></i><em></em></div></div>
-            <div class="trace"><span>5 samples</span><span>1/5 agree</span><span>trace check ✕</span></div>
-          </div>
-        </div></div></div>
-        <div class="cap">
-          <div class="row"><span class="num">02</span><h3>SafeResponse</h3><span class="yr">May 2026</span></div>
-          <p class="what">Hallucination detection middleware.</p>
-          <p class="desc">Retrieves evidence, samples several answers, verifies their reasoning traces, and abstains when confidence falls below a calibrated threshold.</p>
-          <p class="meta"><span><b>Qwen2.5 + LoRA</b></span><span>FAISS · FastAPI · Docker</span></p>
-          <a class="gh" href="https://github.com/Gakshith/SafeResponse_Engine" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-      <article class="proj">
-        <div class="frame"><span class="exh" aria-hidden="true">EXHIBIT C</span><div class="shot"><div class="ui">
-          <div class="ui-top"><span class="dots"><i></i><i></i><i></i></span><b>AINSTEIN</b><span style="margin-left:auto">solver ⇄ critic</span></div>
-          <div class="ain-body">
-            <ol class="steps"><li class="done">Ingest</li><li class="done">Extract</li><li class="now">Solve</li><li>Critique</li><li>Judge</li></ol>
-            <div class="ain-main">
-              <p class="ain-h">Do LLMs reason, or pattern-match?</p>
-              <p class="ain-s">ICLR 2025 · 1,214 papers</p>
-              <div class="prog"><i></i></div>
-              <ul class="log"><li><b>extract</b> core problem, 3 constraints</li><li><b>critic</b> rejects draft 2: unproven step</li><li><b>solver</b> revising draft 3</li></ul>
-            </div>
-          </div>
-        </div></div></div>
-        <div class="cap">
-          <div class="row"><span class="num">03</span><h3>AINSTEIN</h3><span class="yr">Mar 2026</span></div>
-          <p class="what">Multi-agent scientific reasoning.</p>
-          <p class="desc">Solver and critic agents read papers end to end and revise until a solution passes review; an embedding judge scores it against the authors’ own.</p>
-          <p class="meta"><span><b>1,214</b> ICLR 2025 papers</span><span>LangChain · Qwen3-Embedding</span></p>
-          <a class="gh" href="https://github.com/Gakshith/AINSTEIN-Research-Paper" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-      <article class="proj">
-        <div class="frame" data-x="logindesk"><span class="exh" aria-hidden="true">EXHIBIT D</span><div class="shot"><svg class="ld" viewBox="0 0 320 220" preserveAspectRatio="xMidYMin slice" role="img" aria-label="A live run on a Mac: Claude appears as a spark and you ask it to log you into x.com. The spark becomes LoginDesk's cursor, opens x.com in Chrome and types the username. When it reaches the password field, the field seals and sends the cursor back to wait. LoginDesk's vault drops down from the menu bar, asks for Touch ID, and pours the password into the field itself. The cursor clicks Log in, lands on the home feed and posts: logged in.">
+        <div class="frame" data-x="logindesk"><span class="exh" aria-hidden="true">EXHIBIT B</span><div class="shot"><svg class="ld" viewBox="0 0 320 220" preserveAspectRatio="xMidYMin slice" role="img" aria-label="A live run on a Mac: Claude appears as a spark and you ask it to log you into x.com. The spark becomes LoginDesk's cursor, opens x.com in Chrome and types the username. When it reaches the password field, the field seals and sends the cursor back to wait. LoginDesk's vault drops down from the menu bar, asks for Touch ID, and pours the password into the field itself. The cursor clicks Log in, lands on the home feed and posts: logged in.">
           <defs>
             <linearGradient id="ld-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14304A"/><stop offset=".48" stop-color="#2E5568"/><stop offset=".78" stop-color="#C9785A"/><stop offset="1" stop-color="#F0B266"/></linearGradient>
             <linearGradient id="ld-fpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A5B"/><stop offset="1" stop-color="#FF2D6A"/></linearGradient>
@@ -1014,11 +983,50 @@ button{font:inherit;color:inherit}
           </g>
         </svg></div></div>
         <div class="cap">
-          <div class="row"><span class="num">04</span><h3>LoginDesk</h3><span class="yr">Nov 2026</span></div>
+          <div class="row"><span class="num">02</span><h3>LoginDesk</h3><span class="yr">Nov 2026</span></div>
           <p class="what">AI agents log in without ever seeing a password.</p>
           <p class="desc">A local MCP server: the agent asks to log in, and LoginDesk unlocks the account from an encrypted vault, types the password and emailed code into its own sealed Chrome after a Touch ID approval, and hands back only a status.</p>
           <p class="meta"><span><b>Rust</b> · MCP</span><span>270 tests · macOS</span></p>
           <a class="gh" href="https://github.com/Gakshith/logindesk" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="frame" data-x="laptop"><span class="exh" aria-hidden="true">EXHIBIT C</span><div class="shot"><div class="ui">
+          <div class="ui-top"><span class="dots"><i></i><i></i><i></i></span><b>SafeResponse</b><span style="margin-left:auto">/v1/answer</span></div>
+          <div class="sr-body">
+            <p class="bub q">When did the Golden Gate Bridge get its second deck?</p>
+            <div class="bub a"><b>Abstained</b>No retrieved source mentions a second deck. The question may rest on a false premise.</div>
+            <div class="conf"><div class="conf-row"><span>confidence 0.28</span><span>threshold 0.60</span></div><div class="meter"><i></i><em></em></div></div>
+            <div class="trace"><span>5 samples</span><span>1/5 agree</span><span>trace check ✕</span></div>
+          </div>
+        </div></div></div>
+        <div class="cap">
+          <div class="row"><span class="num">03</span><h3>SafeResponse</h3><span class="yr">May 2026</span></div>
+          <p class="what">Hallucination detection middleware.</p>
+          <p class="desc">Retrieves evidence, samples several answers, verifies their reasoning traces, and abstains when confidence falls below a calibrated threshold.</p>
+          <p class="meta"><span><b>Qwen2.5 + LoRA</b></span><span>FAISS · FastAPI · Docker</span></p>
+          <a class="gh" href="https://github.com/Gakshith/SafeResponse_Engine" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="frame"><span class="exh" aria-hidden="true">EXHIBIT D</span><div class="shot"><div class="ui">
+          <div class="ui-top"><span class="dots"><i></i><i></i><i></i></span><b>AINSTEIN</b><span style="margin-left:auto">solver ⇄ critic</span></div>
+          <div class="ain-body">
+            <ol class="steps"><li class="done">Ingest</li><li class="done">Extract</li><li class="now">Solve</li><li>Critique</li><li>Judge</li></ol>
+            <div class="ain-main">
+              <p class="ain-h">Do LLMs reason, or pattern-match?</p>
+              <p class="ain-s">ICLR 2025 · 1,214 papers</p>
+              <div class="prog"><i></i></div>
+              <ul class="log"><li><b>extract</b> core problem, 3 constraints</li><li><b>critic</b> rejects draft 2: unproven step</li><li><b>solver</b> revising draft 3</li></ul>
+            </div>
+          </div>
+        </div></div></div>
+        <div class="cap">
+          <div class="row"><span class="num">04</span><h3>AINSTEIN</h3><span class="yr">Mar 2026</span></div>
+          <p class="what">Multi-agent scientific reasoning.</p>
+          <p class="desc">Solver and critic agents read papers end to end and revise until a solution passes review; an embedding judge scores it against the authors’ own.</p>
+          <p class="meta"><span><b>1,214</b> ICLR 2025 papers</span><span>LangChain · Qwen3-Embedding</span></p>
+          <a class="gh" href="https://github.com/Gakshith/AINSTEIN-Research-Paper" target="_blank" rel="noopener"><svg class="gh-i" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>View on GitHub</span><span class="gh-a" aria-hidden="true">↗</span></a>
         </div>
       </article>
     </div>
@@ -1083,6 +1091,7 @@ button{font:inherit;color:inherit}
   <div class="xv-grid" aria-hidden="true"></div>
   <div class="xv-glow" aria-hidden="true"></div>
   <div class="xv-stage" id="xv-stage" aria-hidden="true"><div class="xv-tilt" id="xv-tilt"></div></div>
+  <svg class="xv-lead" id="xv-lead" aria-hidden="true"></svg>
   <aside class="xv-panel" id="xv-panel">
     <p class="xv-kick" id="xv-kick"></p>
     <h2 class="xv-title" id="xv-title"></h2>
@@ -1553,6 +1562,38 @@ button{font:inherit;color:inherit}
   function paper(){return '<rect x="1" y="12" width="202" height="237" rx="3" fill="#FDFCF8" stroke="#E2DED4"/><g stroke="#A9C1DF" stroke-width=".9" opacity=".7"><path d="M1 70H203M1 100H203M1 130H203M1 160H203M1 190H203M1 220H203"/></g><path d="M34 12V249" stroke="#E7A3A3" stroke-width=".9"/>'}
   function hand(x,y,t,sz,c){return '<text x="'+x+'" y="'+y+'" font-family="Caveat,cursive" font-weight="600" font-size="'+(sz||20)+'" fill="'+(c||'#26324F')+'">'+t+'</text>'}
   function tw(k){return '<svg x="10" y="10" width="280" height="175" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" class="talos run">'+talosLayer(k)+'</svg>'}
+  /* LoginDesk's layers are the card's own pieces: the vault, the seal, the x.com page, the ask */
+  var LG='#F2C14E',LGD='#E0A92E',LF='font-family="Instrument Sans,sans-serif"',LM='font-family="Geist Mono,monospace"';
+  function ldLock(x,y,c){return '<rect x="'+x+'" y="'+y+'" width="5.6" height="4.2" rx=".8" fill="'+c+'"/><path d="M'+(x+.95)+' '+(y+.1)+'v-1.1a1.9 1.9 0 0 1 3.8 0v1.1" fill="none" stroke="'+c+'" stroke-width=".9"/>'}
+  function ldFp(cx,cy,s){var h='';[4,8,12,16,20].forEach(function(r,i){r*=s;h+='<path d="M'+(cx-r)+' '+(cy+r*.15)+'A'+r+' '+r+' 0 0 1 '+(cx+r)+' '+(cy+r*.15)+'" stroke="#F0657A" stroke-width="'+1.5*s+'" fill="none" stroke-linecap="round"/>';if(i)h+='<path d="M'+(cx-r*.9)+' '+(cy+r*.55)+'A'+r+' '+r+' 0 0 0 '+(cx+r*.35)+' '+(cy+r*.95)+'" stroke="#E94A8A" stroke-width="'+1.5*s+'" fill="none" stroke-linecap="round" opacity=".85"/>'});return h}
+  var LDV='<g '+LF+'><rect width="320" height="220" rx="12" fill="#16181D"/><path d="M0 12A12 12 0 0 1 12 0H308A12 12 0 0 1 320 12V16H0Z" fill="#0D0E11"/>'+
+    '<text x="12" y="11" font-size="6.5" font-weight="600" fill="#ECE6D8">Chrome</text><text x="40" y="11" font-size="6.5" fill="#A7A196">File  Edit  View</text>'+
+    '<rect x="232" y="2.5" width="13" height="11" rx="3" fill="rgba(242,193,78,.25)"/>'+ldLock(235.6,7.6,LG)+'<text x="308" y="11" text-anchor="end" font-size="6.5" fill="#ECE6D8">Thu 9:41</text>'+
+    '<rect x="170" y="21" width="138" height="116" rx="9" fill="#24262C" stroke="#34373E"/><text x="180" y="37" font-size="8.5" font-weight="600" fill="#ECE6D8">LoginDesk</text><text x="180" y="47" font-size="6.2" fill="#8A8F98">vault · this Mac</text>'+
+    '<rect x="176" y="54" width="126" height="24" rx="5" fill="rgba(242,193,78,.2)" stroke="'+LG+'" stroke-opacity=".7"/><rect x="181" y="59" width="14" height="14" rx="3.5" fill="#000"/><path d="M185 62.5l6 7M191 62.5l-6 7" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/>'+
+    '<text x="201" y="65" font-size="7.5" fill="#ECE6D8">x.com</text><text x="201" y="73.5" font-size="6.2" fill="#A7A196">akshith</text><text x="296" y="69" text-anchor="end" font-size="6" fill="'+LG+'" '+LM+'>FILL</text>'+
+    '<rect x="181" y="85" width="14" height="14" rx="3.5" fill="#2F3238"/><text x="201" y="91.5" font-size="7.5" fill="#C9C3B6">github.com</text><text x="201" y="99.5" font-size="6.2" fill="#706C66">akshith</text>'+
+    '<rect x="181" y="108" width="14" height="14" rx="3.5" fill="#2F3238"/><text x="201" y="114.5" font-size="7.5" fill="#C9C3B6">mail.google.com</text><text x="201" y="122.5" font-size="6.2" fill="#706C66">akshith</text>'+
+    '<rect x="22" y="60" width="118" height="126" rx="12" fill="#ECECEE"/>'+ldFp(81,100,1.1)+'<rect x="91" y="104" width="14" height="14" rx="3.5" fill="'+LG+'"/>'+ldLock(95.2,110.4,'#2A2108')+
+    '<text x="81" y="140" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1D1D1F">LoginDesk</text><text x="81" y="150" text-anchor="middle" font-size="5.6" fill="#3A3A3C">wants to fill your password</text><text x="81" y="157" text-anchor="middle" font-size="5.6" fill="#3A3A3C">for x.com</text>'+
+    '<rect x="32" y="166" width="98" height="12" rx="6" fill="#0A84FF"/><text x="81" y="174.4" text-anchor="middle" font-size="6.2" fill="#fff">Use Password…</text></g>';
+  var LDS='<rect x=".5" y=".5" width="319" height="219" rx="12" fill="rgba(242,193,78,.05)" stroke="'+LG+'" stroke-opacity=".75" stroke-dasharray="4 4"/>'+
+    '<text x="16" y="22" font-size="7" letter-spacing=".6" fill="'+LGD+'" '+LM+'>12 MCP TOOLS · 0 SECRETS RETURNED</text>'+
+    '<rect x="89" y="115" width="142" height="37" rx="8" fill="none" stroke="'+LG+'" stroke-dasharray="3 2.5"/><rect x="95" y="121" width="130" height="25" rx="4" fill="#FFF8E6" stroke="'+LGD+'" stroke-width="1.4"/>'+
+    [0,1,2,3,4,5,6,7,8,9].map(function(i){return '<circle cx="'+(104+8*i)+'" cy="133.5" r="2.3" fill="#0F1419"/>'}).join('')+
+    '<rect x="207" y="130.5" width="9" height="7" rx="1.3" fill="'+LGD+'"/><path d="M208.8 130.6v-2a2.7 2.7 0 0 1 5.4 0v2" stroke="'+LGD+'" stroke-width="1.3" fill="none"/>'+
+    '<text x="160" y="167" text-anchor="middle" font-size="6.6" letter-spacing=".5" fill="'+LGD+'" '+LM+'>SEALED · ONLY LOGINDESK TYPES HERE</text>';
+  var LDC='<g '+LF+'><rect width="320" height="220" rx="12" fill="#fff"/><path d="M0 12A12 12 0 0 1 12 0H308A12 12 0 0 1 320 12V24H0Z" fill="#E9EBEE"/>'+
+    '<circle cx="15" cy="12" r="3.3" fill="#FF5F57"/><circle cx="25.5" cy="12" r="3.3" fill="#FEBC2E"/><circle cx="36" cy="12" r="3.3" fill="#28C840"/>'+
+    '<rect x="70" y="5" width="180" height="14" rx="7" fill="#fff"/><text x="80" y="15" font-size="7.5" fill="#536471" '+LM+'>x.com/i/flow/login</text>'+
+    '<path d="M153 38l14 17M167 38l-14 17" stroke="#0F1419" stroke-width="3" stroke-linecap="round"/><text x="160" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#0F1419">Sign in to X</text>'+
+    '<rect x="95" y="88" width="130" height="25" rx="4" fill="#fff" stroke="#1D9BF0" stroke-width="1.3"/><text x="102" y="96.5" font-size="5.6" fill="#1D9BF0">Username</text><text x="102" y="108" font-size="9" fill="#0F1419">akshith</text>'+
+    '<rect x="95" y="121" width="130" height="25" rx="4" fill="#F7F9F9" stroke="#CFD9DE"/><text x="102" y="136.5" font-size="8.5" fill="#8B98A5">Password</text>'+
+    '<rect x="95" y="156" width="130" height="18" rx="9" fill="#0F1419"/><text x="160" y="168.4" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">Log in</text><text x="160" y="196" text-anchor="middle" font-size="7" fill="#1D9BF0">Forgot password?</text></g>';
+  var LDA='<g '+LF+'><rect x=".5" y=".5" width="319" height="219" rx="12" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-dasharray="3 4" style="color:var(--ink)"/>'+
+    '<rect x="62" y="84" width="196" height="32" rx="16" fill="#FBFAF7" stroke="#E2DED4"/><text x="77" y="106" font-size="16" fill="#D97757">✻</text><text x="97" y="104.4" font-size="11.5" fill="#16171B">log me into x.com</text>'+
+    '<circle cx="241" cy="100" r="10" fill="#D97757"/><path d="M241 105V95M237 99l4-4 4 4" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>'+
+    '<g transform="translate(196 130)"><path d="M0 0L0 15L4 11.3L7 17.5L9.6 16.3L6.7 10.2L12 9.8Z" fill="#111" stroke="#fff" stroke-width="1" stroke-linejoin="round"/><rect x="10" y="16" width="54" height="14" rx="7" fill="'+LG+'"/>'+ldLock(15.6,22.2,'#2A2108')+'<text x="24" y="26" font-size="7.2" font-weight="600" fill="#2A2108">LoginDesk</text></g></g>';
   var X={
     print:{name:'TALOS frame',vb:[300,224],kick:'Fig. 01 · TALOS · one frame, four passes',title:'TALOS',sub:'Aircraft and ship tracking in satellite video.',
       body:'TALOS watches satellite video and flags the aircraft and ships most likely to enter a protected zone. It finds every target, follows each one from frame to frame, and scores how likely it is to cross into the zone.',
@@ -1562,35 +1603,36 @@ button{font:inherit;color:inherit}
         {n:'',t:'Replaced a hand-tuned risk score with a model that predicts the probability of each target entering a protected zone, raising AUROC from 0.92 to 0.98 on a test satellite dataset.',a:tw('base')},
         {n:'',t:'Developed a Kalman-filter multi-object tracker and benchmarked it against SORT, ByteTrack, OC-SORT and BoT-SORT with the same detections and tuning budget. It ranked first on aircraft: 77.4 HOTA, 96.4 IDF1 (BoT-SORT: 75.0, 92.4) with zero ID switches.',a:tw('det'),glass:1},
         {n:'',t:'Built an end-to-end computer vision system that detects, tracks and ranks the threat of aircraft and ships in real satellite video. Retraining a tiled YOLO detector raised aircraft AP50 on held-out test video from 0.7% to 98.4%.',a:tw('trk'),glass:1}]},
-    logindesk:{name:'LoginDesk run',vb:[320,220],kick:'Fig. 04 · LoginDesk · four layers',title:'LoginDesk',sub:'AI agents log in without ever seeing a password.',
-      body:'You ask Claude for an outcome. Claude opens the site and types what it may see, and the moment a secret is needed LoginDesk fills it in its own sealed Chrome. Take it apart and the agent sits on top, never touching the layers that hold the password.',
+    logindesk:{name:'LoginDesk run',vb:[320,220],kick:'Fig. 02 · LoginDesk · four layers',title:'LoginDesk',sub:'AI agents log in without ever seeing a password.',
+      body:'You ask an AI agent to log you in. It opens the site and types what it may see, and the moment a password is needed, LoginDesk fills it from your Mac. The gold line is the only path the password takes.',
       link:['LoginDesk on GitHub','https://github.com/Gakshith/logindesk'],
+      path:{from:[0,74.7,30],to:[1,50,60.7],label:'password path'},
       layers:[
-        {n:'The vault',t:'Every account is encrypted on your Mac. You approve each login with one Touch ID tap.',a:'<rect width="320" height="220" rx="10" fill="#17191E"/><rect x="10" y="10" width="300" height="200" rx="7" fill="none" stroke="#2C2F36"/>'+['x.com','github','gmail','figma','notion','vercel'].map(function(s,i){var x=34+(i%3)*58,y=56+Math.floor(i/3)*52;return '<rect x="'+x+'" y="'+y+'" width="48" height="34" rx="5" fill="#23262C" stroke="#33363D"/><circle cx="'+(x+24)+'" cy="'+(y+12)+'" r="3" fill="'+(i?'#5C5A57':'#F2C14E')+'"/><text x="'+(x+24)+'" y="'+(y+27)+'" text-anchor="middle" font-family="Geist Mono,monospace" font-size="7" fill="#B9B5AC">'+s+'</text>'}).join('')+'<circle cx="252" cy="110" r="24" fill="none" stroke="#F2C14E" stroke-width="2.4"/><path d="M243 116c0-7 4-12 9-12s9 5 9 12M247.5 120c0-4.4 2-8.4 4.5-8.4s4.5 4 4.5 8.4" fill="none" stroke="#F2C14E" stroke-width="1.4"/><text x="34" y="40" font-family="Geist Mono,monospace" font-size="8" letter-spacing="1.2" fill="#F2C14E">VAULT · ENCRYPTED ON YOUR MAC</text>'},
-        {n:'Sealed Chrome',t:'Claude can open pages and type here, but only LoginDesk can fill the password field, and every snapshot Claude gets back is masked.',a:'<rect width="320" height="220" rx="10" fill="#FBFAF7" stroke="#E2DED4"/><path d="M0 10a10 10 0 0 1 10-10h300a10 10 0 0 1 10 10v12H0z" fill="#EEEBE4"/><rect x="40" y="5" width="120" height="12" rx="6" fill="#FBFAF7"/><text x="48" y="13.6" font-family="Geist Mono,monospace" font-size="6.5" fill="#16171B">x.com/i/flow/login</text><path d="M152.5 34L167.5 51M167.5 34L152.5 51" stroke="#16171B" stroke-width="2.2" stroke-linecap="round"/><text x="160" y="72" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="12" font-weight="600" fill="#16171B">Enter your password</text><rect x="70" y="82" width="180" height="22" rx="4" fill="#EFF3F4"/><text x="80" y="96.5" font-family="Instrument Sans,sans-serif" font-size="9" fill="#8B98A5">akshith</text><rect x="63" y="111" width="194" height="34" rx="6" fill="none" stroke="#E0A92E" stroke-dasharray="5 4"/><rect x="70" y="117" width="180" height="22" rx="4" fill="#fff" stroke="#E0A92E"/><circle cx="82" cy="128" r="2.6" fill="#16171B"/><circle cx="91" cy="128" r="2.6" fill="#16171B"/><circle cx="100" cy="128" r="2.6" fill="#16171B"/><circle cx="109" cy="128" r="2.6" fill="#16171B"/><circle cx="118" cy="128" r="2.6" fill="#16171B"/><circle cx="127" cy="128" r="2.6" fill="#16171B"/><circle cx="136" cy="128" r="2.6" fill="#16171B"/><circle cx="145" cy="128" r="2.6" fill="#16171B"/><circle cx="154" cy="128" r="2.6" fill="#16171B"/><circle cx="163" cy="128" r="2.6" fill="#16171B"/><path d="M236 127v-2a3 3 0 0 1 6 0v2" fill="none" stroke="#E0A92E" stroke-width="1.2"/><rect x="234.5" y="126.6" width="9" height="6.4" rx="1" fill="#E0A92E"/><rect x="70" y="154" width="180" height="22" rx="11" fill="#16171B"/><text x="160" y="168.5" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="9.5" font-weight="600" fill="#FBFAF7">Log in</text><text x="160" y="198" text-anchor="middle" font-family="Geist Mono,monospace" font-size="7" fill="#7E5B0B">password typed by LoginDesk, never by Claude</text>'},
-        {n:'The MCP wall',t:'Claude talks to LoginDesk through 12 MCP tools, and none of them returns a password, cookie or code.',glass:1,a:'<rect x="1" y="1" width="318" height="218" rx="10" fill="none" stroke="#E0A92E" stroke-dasharray="2 5"/><circle cx="160" cy="98" r="15" fill="#FBFAF7" stroke="#E0A92E" stroke-width="1.6"/><path d="M154.5 98v-4a5.5 5.5 0 0 1 11 0v4" fill="none" stroke="#7E5B0B" stroke-width="1.6"/><rect x="152" y="97" width="16" height="11" rx="2" fill="#7E5B0B"/><text x="160" y="134" text-anchor="middle" font-family="Geist Mono,monospace" font-size="9" fill="#7E5B0B">12 tools · 0 secrets out</text>'},
-        {n:'Claude',t:'You ask once. Claude opens x.com and types the username, steps aside for the password and gets back one word: logged_in.',a:'<rect x="16" y="16" width="150" height="24" rx="12" fill="#FBFAF7" stroke="#E2DED4"/><text x="28" y="33" font-family="Instrument Sans,sans-serif" font-size="13" fill="#E0A92E">✻</text><text x="42" y="31.6" font-family="Instrument Sans,sans-serif" font-size="9" fill="#16171B">log me into x.com</text><rect x="16" y="48" width="74" height="17" rx="4" fill="#FBFAF7" stroke="#E0A92E"/><circle cx="26" cy="56.5" r="2.6" fill="#E0A92E"/><text x="33" y="59.4" font-family="Geist Mono,monospace" font-size="7" fill="#16171B">logged_in</text><g transform="translate(150 94)"><path d="M0 0L0 18L5 13.5L8.4 21L11.6 19.6L8.2 12.2L14.5 11.8Z" fill="#E0A92E" stroke="#16171B" stroke-width="1" stroke-linejoin="round"/><rect x="12" y="17" width="40" height="13" rx="6.5" fill="#E0A92E"/><text x="18" y="26" font-family="Instrument Sans,sans-serif" font-size="7.5" font-weight="600" fill="#16171B">✻ Claude</text></g>'}]},
-    laptop:{name:'Laptop',vb:[340,236],kick:'Fig. 02 · Laptop · four layers',title:'Where it gets built',sub:'Python and PyTorch for models, Swift for the tools around them.',
+        {n:'The vault',t:'Every account is encrypted on your Mac. You approve with Touch ID, and LoginDesk fills the field itself.',a:LDV},
+        {n:'The seal',t:'The password field locks for the agent. None of its 12 MCP tools returns a password, cookie or code.',glass:1,a:LDS},
+        {n:'Chrome on x.com',t:'The agent opens the page and types the username. Every snapshot it gets back is masked.',a:LDC},
+        {n:'The ask',t:'You type one line. The agent gets back one word: logged_in.',a:LDA}]},
+    laptop:{name:'Laptop',vb:[340,236],kick:'Fig. 03 · Laptop · four layers',title:'Where it gets built',sub:'Python and PyTorch for models, Swift for the tools around them.',
       body:'Most of my work starts here as a small script and ends as a system that checks its own output. The screen is open on the line I care about most.',
       layers:[
         {n:'Keyboard',t:'200+ LeetCode problems, typed here.',a:'<rect x="4" y="4" width="332" height="226" rx="16" fill="#C4C8CE"/><rect x="4" y="4" width="332" height="226" rx="16" fill="none" stroke="#A3A8AF"/>'+KEYS+'<rect x="122" y="150" width="96" height="66" rx="9" fill="#B3B8BF"/>'},
         {n:'Screen',t:'SafeResponse, the rule in one line: below τ, abstain.',a:'<rect x="4" y="4" width="332" height="226" rx="16" fill="#0E1013"/><rect x="18" y="16" width="304" height="190" rx="6" fill="#16191E"/><g font-family="Geist Mono,monospace" font-size="13"><text x="34" y="52" fill="#6B7280"># safe_response.py</text><text x="34" y="80" fill="#E5E7EB">conf = verify(trace, samples)</text><text x="34" y="108" fill="#E5E7EB">if conf &lt; τ:</text><text x="34" y="136" style="fill:var(--acc)">    return abstain()</text><text x="34" y="164" fill="#E5E7EB">return answer</text></g><rect x="138" y="153" width="8" height="15" style="fill:var(--acc)"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect>'},
         {n:'Lid',t:'AG, engraved where a logo would be.',a:'<rect x="4" y="4" width="332" height="226" rx="16" fill="url(#g-lid)"/><rect x="4" y="4" width="332" height="226" rx="16" fill="none" stroke="#A3A8AF"/><rect x="4" y="4" width="332" height="226" rx="16" fill="url(#g-sheen)" opacity=".35"/><path d="M14 214H326" stroke="#AEB3BA"/><text x="170" y="128" text-anchor="middle" font-family="Bodoni Moda,serif" font-size="20" letter-spacing="3" fill="#9FA4AB">AG</text>'},
-        {n:'Sticker · ∂L/∂θ',t:'The chain rule. Everything else is bookkeeping.',a:'<circle cx="252" cy="70" r="27" fill="#F2D24B"/><text x="252" y="76" text-anchor="middle" font-family="Bodoni Moda,serif" font-style="italic" font-size="17" fill="#1C1A17">∂L/∂θ</text>'}]},
-    id:{name:'Student ID',vb:[212,134],kick:'Fig. 03 · Student ID · four layers',title:'SF State, Computer Science',sub:'B.S. · 08/2025 — Current',
+        {n:'Sticker · ∂L/∂θ',pin:[82,19],t:'The chain rule. Everything else is bookkeeping.',a:'<circle cx="252" cy="70" r="27" fill="#F2D24B"/><text x="252" y="76" text-anchor="middle" font-family="Bodoni Moda,serif" font-style="italic" font-size="17" fill="#1C1A17">∂L/∂θ</text>'}]},
+    id:{name:'Student ID',vb:[212,134],kick:'Fig. 04 · Student ID · four layers',title:'SF State, Computer Science',sub:'B.S. · 08/2025 — Current',
       body:'I transferred from CMR College of Engineering in Hyderabad to San Francisco State in 2025. Coursework in NLP, probability and statistics, and web software development.',
       layers:[
         {n:'Back',t:'Transferred from CMR College, Hyderabad (2023 — 2025).',a:'<rect x="1" y="1" width="210" height="132" rx="10" fill="#2A1042"/><rect x="1" y="16" width="210" height="24" fill="#121014"/><rect x="14" y="56" width="124" height="22" rx="2" fill="#EDE7DA"/>'+hand(20,72,'A. Gojuru',16,'#2E2A36')+'<text x="14" y="104" font-family="Geist Mono,monospace" font-size="6.4" letter-spacing=".5" fill="#E3B754">SFSU · 08/2025 — 12/2027 · TRANSFER</text>'},
         {n:'Card',t:'Computer Science, San Francisco State.',a:'<rect x="1" y="1" width="210" height="132" rx="10" fill="url(#g-card)"/><rect x="88" y="9" width="36" height="6" rx="3" fill="#1F0B33" opacity=".55"/>'},
         {n:'Print',t:'Akshith Gojuru · Computer Science, class of ’27.',a:'<text x="14" y="34" font-family="Bodoni Moda,serif" font-size="19" font-weight="500" fill="#E3B754">SF State</text><text x="14" y="47" font-family="Geist Mono,monospace" font-size="5.3" letter-spacing=".5" fill="#E3B754">SAN FRANCISCO STATE UNIVERSITY</text><text x="14" y="88" font-family="Instrument Sans,sans-serif" font-weight="600" font-size="10" letter-spacing="1" fill="#F4ECDD">AKSHITH GOJURU</text><text x="14" y="101" font-family="Geist Mono,monospace" font-size="7" fill="#F4ECDD">STUDENT · COMPUTER SCIENCE · ’27</text><g fill="#F4ECDD"><rect x="14" y="110" width="1.5" height="13"/><rect x="18" y="110" width="3" height="13"/><rect x="23" y="110" width="1" height="13"/><rect x="26" y="110" width="2" height="13"/><rect x="31" y="110" width="1" height="13"/><rect x="34" y="110" width="3" height="13"/><rect x="39" y="110" width="1.5" height="13"/><rect x="43" y="110" width="1" height="13"/><rect x="46" y="110" width="2.5" height="13"/><rect x="51" y="110" width="1" height="13"/><rect x="54" y="110" width="2" height="13"/><rect x="58" y="110" width="1" height="13"/><rect x="61" y="110" width="3" height="13"/><rect x="66" y="110" width="1.5" height="13"/></g>',glass:1},
-        {n:'Hologram',t:'AG. A monogram instead of a photo.',a:'<rect x="148" y="24" width="48" height="56" rx="4" fill="url(#g-holo)" stroke="#E3B754"/><text x="172" y="58" text-anchor="middle" font-family="Bodoni Moda,serif" font-size="20" fill="#E3B754">AG</text>'}]},
+        {n:'Hologram',pin:[92,18],t:'AG. A monogram instead of a photo.',a:'<rect x="148" y="24" width="48" height="56" rx="4" fill="url(#g-holo)" stroke="#E3B754"/><text x="172" y="58" text-anchor="middle" font-family="Bodoni Moda,serif" font-size="20" fill="#E3B754">AG</text>'}]},
     coffee:{name:'Coffee',vb:[170,170],kick:'Fig. 05 · Coffee · four layers',title:'Right now',sub:'What’s brewing this semester.',
       body:'Research assistant at SFSU, building LLM judges and auditing a personalization benchmark. Looking for a Summer 2027 internship in AI/ML.',
       layers:[
-        {n:'Saucer',t:'San Francisco, CA.',a:'<circle cx="80" cy="85" r="74" fill="#D7C2A3"/><circle cx="80" cy="85" r="70" fill="none" stroke="#C4AC88" stroke-dasharray="2 4"/>'},
-        {n:'Cup',t:'Undergraduate research assistant, SFSU.',a:'<rect x="128" y="74" width="38" height="22" rx="11" fill="#EFEBE3" stroke="#D9D3C8"/><circle cx="80" cy="85" r="50" fill="url(#g-cup)" stroke="#DAD5CB"/>'},
-        {n:'Coffee',t:'Open to Summer 2027 internships.',a:'<circle cx="80" cy="85" r="41" fill="url(#g-coffee)"/><ellipse cx="70" cy="74" rx="14" ry="6" fill="#fff" opacity=".18" transform="rotate(-30 70 74)"/>'},
-        {n:'Steam',t:'Auditing 1,560 judge evaluations for PersonaBench.',a:'<g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round" style="color:var(--ink)"><path d="M64 112c-9-10 9-17 0-29s9-19 0-30"><animate attributeName="stroke-opacity" values=".15;.6;.15" dur="3s" repeatCount="indefinite"/></path><path d="M82 118c-9-11 9-18 0-31s9-20 0-32"><animate attributeName="stroke-opacity" values=".55;.15;.55" dur="3.4s" repeatCount="indefinite"/></path><path d="M100 112c-9-10 9-17 0-29s9-19 0-30"><animate attributeName="stroke-opacity" values=".3;.6;.3" dur="2.6s" repeatCount="indefinite"/></path></g>',glass:1}]}
+        {n:'Saucer',pin:[91,50],t:'San Francisco, CA.',a:'<circle cx="80" cy="85" r="74" fill="#D7C2A3"/><circle cx="80" cy="85" r="70" fill="none" stroke="#C4AC88" stroke-dasharray="2 4"/>'},
+        {n:'Cup',pin:[97,50],t:'Undergraduate research assistant, SFSU.',a:'<rect x="128" y="74" width="38" height="22" rx="11" fill="#EFEBE3" stroke="#D9D3C8"/><circle cx="80" cy="85" r="50" fill="url(#g-cup)" stroke="#DAD5CB"/>'},
+        {n:'Coffee',pin:[72,50],t:'Open to Summer 2027 internships.',a:'<circle cx="80" cy="85" r="41" fill="url(#g-coffee)"/><ellipse cx="70" cy="74" rx="14" ry="6" fill="#fff" opacity=".18" transform="rotate(-30 70 74)"/>'},
+        {n:'Steam',pin:[60,31],t:'Auditing 1,560 judge evaluations for PersonaBench.',a:'<g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round" style="color:var(--ink)"><path d="M64 112c-9-10 9-17 0-29s9-19 0-30"><animate attributeName="stroke-opacity" values=".15;.6;.15" dur="3s" repeatCount="indefinite"/></path><path d="M82 118c-9-11 9-18 0-31s9-20 0-32"><animate attributeName="stroke-opacity" values=".55;.15;.55" dur="3.4s" repeatCount="indefinite"/></path><path d="M100 112c-9-10 9-17 0-29s9-19 0-30"><animate attributeName="stroke-opacity" values=".3;.6;.3" dur="2.6s" repeatCount="indefinite"/></path></g>',glass:1}]}
   };
 
   [].forEach.call(document.querySelectorAll('[data-x]'),function(o){
@@ -1609,16 +1651,16 @@ button{font:inherit;color:inherit}
 
   function geometry(spec){
     var vw=innerWidth,vh=innerHeight,mob=vw<820;
-    var W=spec.wide?Math.min(560,vw*(mob?.8:.42)):Math.min(spec.vb[0]>spec.vb[1]*1.2?460:380,vw*(mob?.62:.36));
+    var W=spec.wide?Math.min(560,vw*(mob?.8:.42)):Math.min(spec.vb[0]>spec.vb[1]*1.2?380:320,vw*(mob?.62:.3));
     var H=W*spec.vb[1]/spec.vb[0];
     return {W:W,H:H,cx:mob?vw/2:vw*.36,cy:mob?vh*.26:vh*.52,mob:mob};
   }
   function place(b,spec){
     box=b;
     stage.style.cssText='left:'+(b.cx-b.W/2)+'px;top:'+(b.cy-b.H/2)+'px;width:'+b.W+'px;height:'+b.H+'px';
-    var gap=spec.axis==='x'?b.W*.15:Math.min(b.W*.17,b.mob?44:76);
+    var gap=spec.axis==='x'?b.W*.15:Math.min(b.W*.3,innerHeight*.12,b.mob?44:112);
     stage.style.setProperty('--gap',gap.toFixed(1)+'px');
-    stage.style.setProperty('--tx',spec.axis==='x'?'52deg':'56deg');stage.style.setProperty('--tz',spec.axis==='x'?'-16deg':'-36deg');
+    stage.style.setProperty('--tx',spec.axis==='x'?'52deg':'57deg');stage.style.setProperty('--tz',spec.axis==='x'?'-16deg':'-40deg');
     xv.style.setProperty('--gx',b.cx+'px');xv.style.setProperty('--gy',b.cy+'px');
   }
   function fromDesk(o){
@@ -1629,12 +1671,12 @@ button{font:inherit;color:inherit}
     var spec=X[key],n=spec.layers.length,lo=spec.axis==='x'?0:-(n-1)/2,h='';
     stage.style.setProperty('--lo',lo);
     h+='<div class="xv-plate"></div>';
-    if(spec.axis!=='x')[[0,0],[100,0],[0,100],[100,100]].forEach(function(c){h+='<i class="xv-post" style="left:'+c[0]+'%;top:'+c[1]+'%;--len:calc('+(n-1)+' * var(--gap))"></i>'});
     spec.layers.forEach(function(L,j){
       var ox=spec.axis==='x'?L.ox:0,oz=spec.axis==='x'?0:j+lo,num=('0'+(n-j)).slice(-2);
-      h+='<div class="xl'+(L.glass?' glass':'')+'" data-j="'+j+'" style="--j:'+j+';--k:'+(n-1-j)+';--ox:'+ox+';--oz:'+oz+'"><svg viewBox="0 0 '+spec.vb[0]+' '+spec.vb[1]+'">'+L.a+'</svg><span class="xl-n">'+num+'</span></div>';
+      h+='<div class="xl'+(L.glass?' glass':'')+'" data-j="'+j+'" style="--j:'+j+';--k:'+(n-1-j)+';--ox:'+ox+';--oz:'+oz+'"><svg viewBox="0 0 '+spec.vb[0]+' '+spec.vb[1]+'">'+L.a+'</svg><span class="xl-n">'+num+'</span><i class="xl-p"'+(L.pin?' style="left:'+L.pin[0]+'%;top:'+L.pin[1]+'%;right:auto"':'')+'></i>'+pathPin(spec,j)+'</div>';
     });
     tilt.innerHTML=h;
+    buildLeads(spec,n);
     // list, top layer first
     el.list.innerHTML='';
     for(var j=n-1;j>=0;j--){var li=document.createElement('li');li.dataset.j=j;li.innerHTML='<span class="n">'+('0'+(n-j)).slice(-2)+'</span><b></b><span class="t"></span>';el.list.appendChild(li)}
@@ -1643,6 +1685,41 @@ button{font:inherit;color:inherit}
     if(spec.link){el.link.hidden=false;el.link.href=spec.link[1];el.link.textContent=spec.link[0]+' →'}else el.link.hidden=true;
     var vis=visibleOrder();el.count.textContent=(vis.indexOf(key)+1)+' / '+vis.length;
   }
+
+  /* leader lines: from each layer's corner to its numbered label, plus the password's own path */
+  var lead=document.getElementById('xv-lead'),leadRaf=0,leadEls=[],pathEls=null,NS='http://www.w3.org/2000/svg';
+  function pathPin(spec,j){var p=spec.path,h='';if(!p)return h;
+    if(p.from[0]===j)h+='<i class="xl-pa" style="left:'+p.from[1]+'%;top:'+p.from[2]+'%"></i>';
+    if(p.to[0]===j)h+='<i class="xl-pb" style="left:'+p.to[1]+'%;top:'+p.to[2]+'%"></i>';return h}
+  function mk(tag,cls){var e=document.createElementNS(NS,tag);e.setAttribute('class',cls);lead.appendChild(e);return e}
+  function buildLeads(spec,n){
+    lead.innerHTML='<defs><marker id="xv-arw" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="var(--acc)" stroke-width="1.6"/></marker></defs>';
+    leadEls=[];for(var j=0;j<n;j++)leadEls[j]={l:mk('path','ln'),d:mk('circle','dt')};
+    pathEls=spec.path?{l:mk('path','pp'),a:mk('circle','pa'),t:mk('text','pt')}:null;
+    if(pathEls){pathEls.l.setAttribute('marker-end','url(#xv-arw)');pathEls.a.setAttribute('r','3.5');pathEls.t.textContent=spec.path.label}
+  }
+  function drawLeads(){
+    leadRaf=requestAnimationFrame(drawLeads);
+    if(!cur)return;
+    var lis=el.list.children,i,li,j,p,nb,a,b,x2,y2,on;
+    for(i=0;i<lis.length;i++){li=lis[i];j=+li.dataset.j;var E=leadEls[j];if(!E)continue;
+      p=tilt.querySelector('.xl[data-j="'+j+'"] .xl-p');nb=li.querySelector('.n');
+      if(!p||!nb||!li.classList.contains('on')){E.l.style.display=E.d.style.display='none';continue}
+      a=p.getBoundingClientRect();b=nb.getBoundingClientRect();x2=b.left-8;y2=b.top+b.height/2;on=li.classList.contains('hi');
+      if(x2<a.left+40){E.l.style.display=E.d.style.display='none';continue}
+      E.l.style.display=E.d.style.display='';
+      E.l.setAttribute('d','M'+a.left.toFixed(1)+' '+a.top.toFixed(1)+'L'+(x2-28).toFixed(1)+' '+y2.toFixed(1)+'H'+x2.toFixed(1));
+      E.d.setAttribute('cx',a.left.toFixed(1));E.d.setAttribute('cy',a.top.toFixed(1));E.d.setAttribute('r','2.6');
+      E.l.classList.toggle('on',on);E.d.classList.toggle('on',on);
+    }
+    if(pathEls){var s0=tilt.querySelector('.xl-pa'),s1=tilt.querySelector('.xl-pb');
+      if(s0&&s1){a=s0.getBoundingClientRect();b=s1.getBoundingClientRect();
+        pathEls.l.setAttribute('d','M'+a.left.toFixed(1)+' '+a.top.toFixed(1)+'L'+b.left.toFixed(1)+' '+(b.top+4).toFixed(1));
+        pathEls.a.setAttribute('cx',a.left.toFixed(1));pathEls.a.setAttribute('cy',a.top.toFixed(1));
+        pathEls.t.setAttribute('x',(Math.max(a.left,b.left)+12).toFixed(1));pathEls.t.setAttribute('y',((a.top+b.top)/2).toFixed(1));}}
+  }
+  function leadsOn(){if(!leadRaf)leadRaf=requestAnimationFrame(drawLeads)}
+  function leadsOff(){cancelAnimationFrame(leadRaf);leadRaf=0}
   var hiLock=-1;
   function hi(j,fromHover){
     if(fromHover&&typing)return;
@@ -1712,6 +1789,7 @@ button{font:inherit;color:inherit}
       later(function(){typeOut(o.dataset.x)},620);
       later(function(){xv.classList.add('settled');busy=false},1900);
     });
+    leadsOn();
     document.getElementById('xv-close').focus({preventScroll:true});
   }
   function closeX(){
@@ -1721,7 +1799,7 @@ button{font:inherit;color:inherit}
     xv.classList.remove('settled','swap');xv.classList.add('closing');
     xv.classList.remove('exploded');
     later(function(){xv.classList.remove('in')},560);
-    later(function(){var o=cur;xv.hidden=true;xv.className='xv';o.style.visibility='';document.documentElement.style.overflow='';cur=null;busy=false;o.focus({preventScroll:true})},1300);
+    later(function(){var o=cur;xv.hidden=true;xv.className='xv';o.style.visibility='';document.documentElement.style.overflow='';cur=null;busy=false;leadsOff();o.focus({preventScroll:true})},1300);
   }
   function navX(d){
     if(!cur||busy)return;
